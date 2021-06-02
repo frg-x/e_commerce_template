@@ -43,7 +43,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               child: Text(
                 'Verification\nCode',
                 style: TextStyle(
-                  fontFamily: 'SFProDisplay',
+                  fontFamily: 'SF-Pro-Display',
                   fontSize: 25.0,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
@@ -111,7 +111,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     fieldStyle: FieldStyle.underline,
                     keyboardType: TextInputType.number,
                     style: TextStyle(
-                      fontFamily: 'SFProDisplay',
+                      fontFamily: 'SF-Pro-Display',
                       fontSize: 25.0,
                       fontWeight: FontWeight.w700,
                       color: Color(0xFF605A65),

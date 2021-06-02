@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'E-commerce App',
       theme: ThemeData(
         //primarySwatch: Colors.blue,
-        fontFamily: 'SF Pro Text',
+        fontFamily: 'SF-Pro-Text',
       ),
       debugShowCheckedModeBanner: false,
       home: GetStarted(),

@@ -63,15 +63,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
 
   fonts:
-
-    - family: SFProText
-    - fonts:
+    - family: SF-Pro-Text
+      fonts:
         - asset: assets/fonts/SF-Pro-Text-Regular.otf
         - asset: assets/fonts/SF-Pro-Text-Bold.otf
           weight: 700
 
-    - family: SFProDisplay
-    - fonts:
+    - family: SF-Pro-Display
+      fonts:
         - asset: assets/fonts/SF-Pro-Display-Regular.otf
         - asset: assets/fonts/SF-Pro-Display-Bold.otf
           weight: 700

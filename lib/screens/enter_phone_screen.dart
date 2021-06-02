@@ -71,7 +71,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
               child: Text(
                 'What Is Your Phone \nNumber?',
                 style: TextStyle(
-                  fontFamily: 'SFProDisplay',
+                  fontFamily: 'SF-Pro-Display',
                   fontSize: 25.0,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
