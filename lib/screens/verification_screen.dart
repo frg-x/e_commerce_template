@@ -58,7 +58,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 children: [
                   Container(
                     child: Text(
-                      'Please enter code Code sent to',
+                      'Please enter Code sent to',
                       style: TextStyle(
                         fontSize: 17.0,
                         fontWeight: FontWeight.w400,
