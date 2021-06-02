@@ -66,8 +66,14 @@ flutter:
 
     - family: SFProText
     - fonts:
-        - asset: assets/fonts/SF-UI-Text-Regular.ttf
-        - asset: assets/fonts/SF-UI-Text-Bold.ttf
+        - asset: assets/fonts/SF-Pro-Text-Regular.otf
+        - asset: assets/fonts/SF-Pro-Text-Bold.otf
+          weight: 700
+
+    - family: SFProDisplay
+    - fonts:
+        - asset: assets/fonts/SF-Pro-Display-Regular.otf
+        - asset: assets/fonts/SF-Pro-Display-Bold.otf
           weight: 700
 
     - family: Montserrat

@@ -58,7 +58,7 @@ class _GetStartedState extends State<GetStarted> {
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 31.0,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w800,
                             color: Color(0xFFE7B944),
                           ),
                           textAlign: TextAlign.center,
@@ -68,7 +68,7 @@ class _GetStartedState extends State<GetStarted> {
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 31.0,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w800,
                             color: Colors.white,
                           ),
                           textAlign: TextAlign.center,
@@ -81,8 +81,8 @@ class _GetStartedState extends State<GetStarted> {
                       style: TextStyle(
                         fontSize: 14.0,
                         height: 1.35,
+                        fontWeight: FontWeight.w400,
                         color: Colors.white,
-                        fontFamily: 'SFProText',
                       ),
                       textAlign: TextAlign.center,
                       softWrap: true,
@@ -110,9 +110,10 @@ class _GetStartedState extends State<GetStarted> {
                         child: Text(
                           'Get Started',
                           style: TextStyle(
-                              fontSize: 17.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                            fontSize: 17.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),

@@ -71,6 +71,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
               child: Text(
                 'What Is Your Phone \nNumber?',
                 style: TextStyle(
+                  fontFamily: 'SFProDisplay',
                   fontSize: 25.0,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
@@ -102,11 +103,6 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                       color: Color(0xFF605A65),
                     ),
                     decoration: InputDecoration(
-                      prefixStyle: TextStyle(
-                        color: Color(0xFF605A65),
-                        fontSize: 19.0,
-                        fontFamily: 'SFProText',
-                      ),
                       prefixIcon: Container(
                         padding: EdgeInsets.only(left: 18.0),
                         width: 80.0,
@@ -123,6 +119,11 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                             ),
                           ],
                         ),
+                      ),
+                      prefixStyle: TextStyle(
+                        color: Color(0xFF605A65),
+                        fontSize: 19.0,
+                        fontWeight: FontWeight.w400,
                       ),
                       prefixText: '${selectedCountry['code']} ',
                       suffixIcon: IconButton(
@@ -180,9 +181,10 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                       child: Text(
                         'Send Verification Code',
                         style: TextStyle(
-                            fontSize: 17.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700),
+                          fontSize: 17.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
@@ -196,7 +198,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                       style: TextStyle(
                         fontSize: 17.0,
                         color: Color(0xFF9B9B9B),
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
