@@ -170,7 +170,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                                 Color(0xFFE7B944),
                               )
                             : MaterialStateProperty.all<Color>(
-                                Colors.grey.shade400),
+                                Color(0xFF9B9B9B)),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(

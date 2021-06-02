@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerificationScreen extends StatefulWidget {
   static const routeName = '/verification';
@@ -95,27 +96,47 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ],
                   ),
                   SizedBox(height: 24.0),
-                  OTPTextField(
-                    onCompleted: (pin) => _validatePin(pin),
-                    onChanged: (pin) => _validatePin(pin),
-                    length: 6,
-                    width: MediaQuery.of(context).size.width,
-                    textFieldAlignment: MainAxisAlignment.spaceEvenly,
-                    otpFieldStyle: OtpFieldStyle(
-                      borderColor: Colors.green,
-                      disabledBorderColor: Colors.green,
-                      focusBorderColor: Colors.green,
-                      enabledBorderColor: Colors.green,
-                    ),
-                    fieldWidth: 50,
-                    fieldStyle: FieldStyle.underline,
+                  // OTPTextField(
+                  //   onCompleted: (pin) => _validatePin(pin),
+                  //   onChanged: (pin) => _validatePin(pin),
+                  //   length: 6,
+                  //   width: MediaQuery.of(context).size.width,
+                  //   textFieldAlignment: MainAxisAlignment.spaceEvenly,
+                  //   otpFieldStyle: OtpFieldStyle(
+                  //     borderColor: Colors.green,
+                  //     disabledBorderColor: Colors.green,
+                  //     focusBorderColor: Colors.green,
+                  //     enabledBorderColor: Colors.green,
+                  //   ),
+                  //   fieldWidth: 50,
+                  //   fieldStyle: FieldStyle.underline,
+                  //   keyboardType: TextInputType.number,
+                  //   style: TextStyle(
+                  //     fontFamily: 'SF-Pro-Display',
+                  //     fontSize: 25.0,
+                  //     fontWeight: FontWeight.w700,
+                  //     color: Color(0xFF605A65),
+                  //   ),
+                  // ),
+                  PinCodeTextField(
+                    appContext: context,
                     keyboardType: TextInputType.number,
-                    style: TextStyle(
+                    length: 6,
+                    showCursor: false,
+                    pinTheme: PinTheme(
+                      disabledColor: Colors.black,
+                      inactiveColor: Color(0xFF9B9B9B),
+                      activeColor: Colors.green,
+                      selectedColor: Color(0xFF9B9B9B),
+                    ),
+                    textStyle: TextStyle(
                       fontFamily: 'SF-Pro-Display',
                       fontSize: 25.0,
                       fontWeight: FontWeight.w700,
                       color: Color(0xFF605A65),
                     ),
+                    animationType: AnimationType.none,
+                    onChanged: (text) => _validatePin(text),
                   ),
                   SizedBox(height: 24.0),
                   SizedBox(
@@ -133,7 +154,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                 Color(0xFFE7B944),
                               )
                             : MaterialStateProperty.all<Color>(
-                                Colors.grey.shade400),
+                                Color(0xFF9B9B9B)),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(

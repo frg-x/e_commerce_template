@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   mask_text_input_formatter: ^2.0.0
   otp_text_field: ^1.1.1
+  pin_code_fields: ^7.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
