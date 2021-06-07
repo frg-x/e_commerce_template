@@ -1,3 +1,4 @@
+import 'package:e_commerce_template/screens/home_screen.dart';
 import 'package:e_commerce_template/screens/verification_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,10 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
     setState(() {
       showNextStep = unformattedText.length == 9 ? true : false;
       showClearIcon = unformattedText.length > 0 ? true : false;
+      showNextStep
+          ? FocusScope.of(context).requestFocus(new FocusNode())
+          // ignore: unnecessary_statements
+          : null;
     });
   }
 
@@ -63,9 +68,16 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
               width: MediaQuery.of(context).size.width,
               height: 197.0,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/rect_35_phone.png'),
-                  fit: BoxFit.fill,
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(300.0),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xFF34283E),
+                    Color(0xFF845FA1),
+                  ],
                 ),
               ),
               child: Text(
@@ -97,21 +109,25 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                     controller: _phoneNumberController,
                     keyboardType: TextInputType.phone,
                     onChanged: _validatePhoneNumber,
+                    autofocus: true,
                     inputFormatters: [maskFormatter],
                     style: TextStyle(
                       fontSize: 19.0,
                       color: Color(0xFF605A65),
                     ),
                     decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 20.0,
+                      ),
                       prefixIcon: Container(
                         padding: EdgeInsets.only(left: 18.0),
-                        width: 80.0,
+                        width: 70.0,
                         child: Row(
                           children: [
                             Image.asset(
                               'assets/images/countries/${selectedCountry['country']}.png',
-                              width: 32.0,
-                              height: 32.0,
+                              width: 24.0,
+                              height: 24.0,
                             ),
                             SizedBox(
                               child: Icon(Icons.keyboard_arrow_down),
@@ -191,7 +207,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                   SizedBox(height: 12.0),
                   TextButton(
                     onPressed: () {
-                      print('Skip');
+                      Navigator.pushNamed(context, HomeScreen.routeName);
                     },
                     child: Text(
                       'Skip',

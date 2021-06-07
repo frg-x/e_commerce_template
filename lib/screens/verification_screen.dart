@@ -1,11 +1,11 @@
-import 'dart:ui';
-
+import 'package:e_commerce_template/screens/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:otp_text_field/otp_text_field.dart';
-import 'package:otp_text_field/style.dart';
+// import 'package:otp_text_field/otp_text_field.dart';
+// import 'package:otp_text_field/style.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -17,17 +17,78 @@ class VerificationScreen extends StatefulWidget {
 
 class _VerificationScreenState extends State<VerificationScreen> {
   bool showNextStep = false;
+  String otp = '';
+  String verificationId = '';
+  String phoneNumber = '';
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  final TextEditingController pinCodeController = TextEditingController();
 
   void _validatePin(String pin) {
     setState(() {
+      otp = pin;
       showNextStep = pin.length == 6 ? true : false;
     });
   }
 
+  void _resendCode() {
+    setState(() {
+      showNextStep = false;
+      pinCodeController.clear();
+    });
+    _verifyPinCode();
+  }
+
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  Future _verifyPinCode() async {
+    print(otp);
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        await FirebaseAuth.instance
+            .signInWithCredential(credential)
+            .then((value) {
+          if (value.user != null) {
+            print('Logged!');
+            Navigator.pushNamed(context, HomeScreen.routeName);
+          }
+        });
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        // if (e.code == 'invalid-phone-number') {
+        //   print('The provided phone number is not valid.');
+        // }
+        print(e.message);
+        showSnackBar(e.message.toString());
+      },
+      timeout: const Duration(seconds: 60),
+      codeAutoRetrievalTimeout: (String verificationId) {
+        setState(() {
+          this.verificationId = verificationId;
+        });
+      },
+      codeSent: (String verificationId, int? forceResendingToken) async {
+        setState(() {
+          this.verificationId = verificationId;
+        });
+      },
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    phoneNumber = ModalRoute.of(context)!.settings.arguments as String;
+    _verifyPinCode();
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
-    String phoneNumber = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
+      key: _scaffoldKey,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -36,9 +97,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
               width: MediaQuery.of(context).size.width,
               height: 197.0,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/rect_35_phone.png'),
-                  fit: BoxFit.fill,
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(300.0),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xFF34283E),
+                    Color(0xFF845FA1),
+                  ],
                 ),
               ),
               child: Text(
@@ -121,7 +189,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   PinCodeTextField(
                     appContext: context,
                     keyboardType: TextInputType.number,
+                    controller: pinCodeController,
                     length: 6,
+                    autoFocus: true,
                     showCursor: false,
                     pinTheme: PinTheme(
                       disabledColor: Colors.black,
@@ -144,8 +214,27 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     width: MediaQuery.of(context).size.width,
                     child: TextButton(
                       onPressed: showNextStep
-                          ? () {
-                              print('Next Step');
+                          ? () async {
+                              try {
+                                await FirebaseAuth.instance
+                                    .signInWithCredential(
+                                        PhoneAuthProvider.credential(
+                                            verificationId: verificationId,
+                                            smsCode: otp))
+                                    .then((value) {
+                                  if (value.user != null) {
+                                    Navigator.pushNamed(
+                                        context, HomeScreen.routeName);
+                                  }
+                                });
+                              } catch (e) {
+                                FocusScope.of(context).unfocus();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Invalid OTP'),
+                                  ),
+                                );
+                              }
                             }
                           : null,
                       style: ButtonStyle(
@@ -175,7 +264,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   SizedBox(height: 12.0),
                   TextButton(
                     onPressed: () {
-                      print('Resend Code');
+                      _resendCode();
                     },
                     child: Text(
                       'Resend Code',

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'enter_phone_screen.dart';
 
 class GetStarted extends StatefulWidget {
@@ -22,16 +21,23 @@ class _GetStartedState extends State<GetStarted> {
               scale: 0.5,
               height: 600,
             ),
-            Image.asset(
-              'assets/images/get_started_overlay.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
+            Container(
+              height: 560,
+              width: MediaQuery.of(context).size.width,
+              color: Color(0xFF2A034B).withAlpha(77),
             ),
             Positioned(
               right: 0,
               bottom: 220,
-              child: Image.asset(
-                'assets/images/rect_35.png',
+              child: Container(
+                height: 146.0,
+                width: 269.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(300.0),
+                  ),
+                  color: Color(0xFFE7B944).withAlpha(179),
+                ),
               ),
             ),
             Positioned(
@@ -40,9 +46,17 @@ class _GetStartedState extends State<GetStarted> {
                 width: MediaQuery.of(context).size.width,
                 height: 291,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/rect_36.png'),
-                    fit: BoxFit.fill,
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color(0xFF34283E),
+                      Color(0xFF845FA1),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40.0),
+                    topRight: Radius.circular(40.0),
                   ),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
