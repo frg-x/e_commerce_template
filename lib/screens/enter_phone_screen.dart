@@ -1,4 +1,4 @@
-import 'package:e_commerce_template/screens/home_screen.dart';
+import 'package:e_commerce_template/screens/tabs_screen.dart';
 import 'package:e_commerce_template/screens/verification_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -207,7 +207,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                   SizedBox(height: 12.0),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.routeName);
+                      Navigator.pushNamed(context, TabsScreen.routeName);
                     },
                     child: Text(
                       'Skip',

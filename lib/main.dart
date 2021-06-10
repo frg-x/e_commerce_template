@@ -1,6 +1,6 @@
 import 'package:e_commerce_template/screens/enter_phone_screen.dart';
 import 'package:e_commerce_template/screens/get_started_screen.dart';
-import 'package:e_commerce_template/screens/home_screen.dart';
+import 'package:e_commerce_template/screens/tabs_screen.dart';
 import 'package:e_commerce_template/screens/verification_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,12 +22,11 @@ class MyApp extends StatelessWidget {
         fontFamily: 'SF-Pro-Text',
       ),
       debugShowCheckedModeBanner: false,
-      // ignore: unnecessary_null_comparison
-      home: GetStarted(), //HomeScreen(),
+      home: GetStarted(),
       routes: {
         EnterPhoneScreen.routeName: (context) => EnterPhoneScreen(),
         VerificationScreen.routeName: (context) => VerificationScreen(),
-        HomeScreen.routeName: (context) => HomeScreen(),
+        TabsScreen.routeName: (context) => TabsScreen(),
       },
     );
   }

@@ -1,4 +1,4 @@
-import 'package:e_commerce_template/screens/home_screen.dart';
+import 'package:e_commerce_template/screens/tabs_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
             .then((value) {
           if (value.user != null) {
             print('Logged!');
-            Navigator.pushNamed(context, HomeScreen.routeName);
+            Navigator.pushNamed(context, TabsScreen.routeName);
           }
         });
       },
@@ -224,7 +224,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                     .then((value) {
                                   if (value.user != null) {
                                     Navigator.pushNamed(
-                                        context, HomeScreen.routeName);
+                                        context, TabsScreen.routeName);
                                   }
                                 });
                               } catch (e) {

@@ -12,8 +12,8 @@ class CatalogueItem extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          height: 88.0,
-          width: 88.0,
+          height: 90.0,
+          width: 90.0,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(image),
@@ -22,8 +22,8 @@ class CatalogueItem extends StatelessWidget {
           ),
         ),
         Container(
-          width: 88.0,
-          height: 88.0,
+          width: 90.0,
+          height: 90.0,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             gradient: LinearGradient(
