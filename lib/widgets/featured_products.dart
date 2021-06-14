@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/cubit/favorite_cubit.dart';
 import 'package:e_commerce_template/cubit/products_cubit.dart';
@@ -49,19 +50,26 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                       Positioned(
                         height: 36,
                         width: 36,
-                        child: BlocBuilder<FavoriteCubit, GetFavoriteState>(
-                          builder: (context, innerState) {
-                            //print(innerState);
-                            //print(context.read<FavoriteCubit>().favProducts);
-                            return FavoriteButton(
-                              favoriteStatus: context
-                                      .read<FavoriteCubit>()
-                                      .favProducts
-                                      .contains(productItemList[index].id)
-                                  ? true
-                                  : false,
-                              productId: productItemList[index].id,
-                            );
+                        child: StreamBuilder<dynamic>(
+                          stream: FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(context.read<FavoriteCubit>().userId)
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              var favProducts = snapshot.data['favProducts'];
+                              print(favProducts);
+                              //print(context.read<FavoriteCubit>().favProducts);
+                              return FavoriteButton(
+                                favoriteStatus: favProducts
+                                        .contains(productItemList[index].id)
+                                    ? true
+                                    : false,
+                                productId: productItemList[index].id,
+                              );
+                            } else
+                              return Icon(Icons.error_outline,
+                                  color: Colors.grey[400]);
                           },
                         ),
                         bottom: -10,
@@ -87,7 +95,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    '-${productItemList[index].discount}%',
+                                    '-${productItemList[index].discount.toStringAsFixed(0)}%',
                                     style: AllStyles.fontSize11w700white,
                                   ),
                                 ),

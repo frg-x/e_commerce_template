@@ -75,8 +75,8 @@ class ShopRepository {
       {required String uid, required String productId}) async {
     DocumentSnapshot<Map<String, dynamic>> querySnapshot =
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
-    var userData = querySnapshot.data() as Map<String, dynamic>;
-    favProducts = (userData['favProducts'] as List)
+    var userData = querySnapshot.data();
+    favProducts = (userData!['favProducts'] as List)
         .map((item) => item as String)
         .toList();
     if (favProducts.contains(productId)) {
