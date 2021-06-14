@@ -1,12 +1,10 @@
 class ProgressItem {
-  int id;
+  String id;
   String title;
-  String bgImage;
-  bool startAnimation;
+  String image;
   ProgressItem({
     required this.id,
     required this.title,
-    required this.bgImage,
-    required this.startAnimation,
+    required this.image,
   });
 }

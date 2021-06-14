@@ -1,11 +1,10 @@
+import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/screens/tabs_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-// import 'package:otp_text_field/otp_text_field.dart';
-// import 'package:otp_text_field/style.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -103,18 +102,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [
-                    Color(0xFF34283E),
-                    Color(0xFF845FA1),
-                  ],
+                  colors: AllColors.purpleGradient,
                 ),
               ),
               child: Text(
                 'Verification\nCode',
-                style: TextStyle(
-                  fontFamily: 'SF-Pro-Display',
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w700,
+                style: AllStyles.SFProDisplay25w700.copyWith(
                   color: Colors.white,
                   height: 1.24,
                 ),
@@ -128,10 +121,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   Container(
                     child: Text(
                       'Please enter Code sent to',
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.w400,
-                      ),
+                      style: AllStyles.fontSize17w400
+                          .copyWith(color: AllColors.lightPurpleGray),
                     ),
                     alignment: Alignment.topLeft,
                   ),
@@ -140,11 +131,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     children: [
                       Text(
                         phoneNumber,
-                        style: TextStyle(
-                          fontSize: 17.0,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF34283E),
-                        ),
+                        style: AllStyles.SFProDisplay17w700deepPurple,
                       ),
                       TextButton(
                         onPressed: () {
@@ -153,39 +140,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         child: Text(
                           'Change Phone Number',
                           softWrap: true,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFF34283E),
-                            decoration: TextDecoration.underline,
-                          ),
+                          style:
+                              AllStyles.SFProDisplay12w400deepPurpleUnderline,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(height: 24.0),
-                  // OTPTextField(
-                  //   onCompleted: (pin) => _validatePin(pin),
-                  //   onChanged: (pin) => _validatePin(pin),
-                  //   length: 6,
-                  //   width: MediaQuery.of(context).size.width,
-                  //   textFieldAlignment: MainAxisAlignment.spaceEvenly,
-                  //   otpFieldStyle: OtpFieldStyle(
-                  //     borderColor: Colors.green,
-                  //     disabledBorderColor: Colors.green,
-                  //     focusBorderColor: Colors.green,
-                  //     enabledBorderColor: Colors.green,
-                  //   ),
-                  //   fieldWidth: 50,
-                  //   fieldStyle: FieldStyle.underline,
-                  //   keyboardType: TextInputType.number,
-                  //   style: TextStyle(
-                  //     fontFamily: 'SF-Pro-Display',
-                  //     fontSize: 25.0,
-                  //     fontWeight: FontWeight.w700,
-                  //     color: Color(0xFF605A65),
-                  //   ),
-                  // ),
                   PinCodeTextField(
                     appContext: context,
                     keyboardType: TextInputType.number,
@@ -195,16 +156,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     showCursor: false,
                     pinTheme: PinTheme(
                       disabledColor: Colors.black,
-                      inactiveColor: Color(0xFF9B9B9B),
+                      inactiveColor: AllColors.lightGray,
                       activeColor: Colors.green,
-                      selectedColor: Color(0xFF9B9B9B),
+                      selectedColor: AllColors.lightGray,
                     ),
-                    textStyle: TextStyle(
-                      fontFamily: 'SF-Pro-Display',
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFF605A65),
-                    ),
+                    textStyle: AllStyles.SFProDisplay25w700.copyWith(
+                        color: AllColors.lightPurpleGray),
                     animationType: AnimationType.none,
                     onChanged: (text) => _validatePin(text),
                   ),
@@ -240,10 +197,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       style: ButtonStyle(
                         backgroundColor: showNextStep
                             ? MaterialStateProperty.all<Color>(
-                                Color(0xFFE7B944),
+                                AllColors.mainYellow,
                               )
                             : MaterialStateProperty.all<Color>(
-                                Color(0xFF9B9B9B)),
+                                AllColors.lightGray),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -253,11 +210,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       ),
                       child: Text(
                         'Send Verification Code',
-                        style: TextStyle(
-                          fontSize: 17.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
+                        style: AllStyles.fontSize17w700white,
                       ),
                     ),
                   ),
@@ -268,11 +221,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     },
                     child: Text(
                       'Resend Code',
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Color(0xFF9B9B9B),
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: AllStyles.fontSize17w700lightGray,
                     ),
                   ),
                 ],

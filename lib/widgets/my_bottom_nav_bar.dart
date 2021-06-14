@@ -1,3 +1,4 @@
+import 'package:e_commerce_template/constants.dart';
 import 'package:flutter/material.dart';
 
 class MyBottomNavBar extends StatefulWidget {
@@ -63,8 +64,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                         ? 'assets/images/icons/home_icon_active.png'
                         : 'assets/images/icons/home_icon.png',
                     color: _activeTab == 0
-                        ? Color(0xFF40304D)
-                        : Color(0xFF9Ba9B9B),
+                        ? AllColors.activeTabTextColor
+                        : AllColors.lightGray,
                     onPress: () {
                       widget.selectPage(0);
                       _activeTab = 0;
@@ -75,8 +76,9 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                     image: _activeTab == 1
                         ? 'assets/images/icons/cat_icon_active.png'
                         : 'assets/images/icons/cat_icon.png',
-                    color:
-                        _activeTab == 1 ? Color(0xFF40304D) : Color(0xFF9B9B9B),
+                    color: _activeTab == 1
+                        ? AllColors.activeTabTextColor
+                        : AllColors.lightGray,
                     onPress: () {
                       widget.selectPage(1);
                       _activeTab = 1;
@@ -87,8 +89,9 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                     image: _activeTab == 2
                         ? 'assets/images/icons/fav_icon_active.png'
                         : 'assets/images/icons/fav_icon.png',
-                    color:
-                        _activeTab == 2 ? Color(0xFF40304D) : Color(0xFF9B9B9B),
+                    color: _activeTab == 2
+                        ? AllColors.activeTabTextColor
+                        : AllColors.lightGray,
                     onPress: () {
                       widget.selectPage(2);
                       _activeTab = 2;
@@ -99,8 +102,9 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                     image: _activeTab == 3
                         ? 'assets/images/icons/profile_icon_active.png'
                         : 'assets/images/icons/profile_icon.png',
-                    color:
-                        _activeTab == 3 ? Color(0xFF40304D) : Color(0xFF9B9B9B),
+                    color: _activeTab == 3
+                        ? AllColors.activeTabTextColor
+                        : AllColors.lightGray,
                     onPress: () {
                       widget.selectPage(3);
                       _activeTab = 3;
@@ -125,21 +129,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
           child: Container(
             height: 56.0,
             width: 116.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(80.0),
-                bottomLeft: Radius.circular(80.0),
-              ),
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xFF34283E),
-                  Color(0xFF845FA1),
-                ],
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                transform: GradientRotation(263 / 360),
-              ),
-            ),
+            decoration: AllStyles.bottomNavBarDecoration,
             child: Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -167,21 +157,11 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                     children: [
                       Text(
                         '\$239.98',
-                        style: TextStyle(
-                          fontSize: 11.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.07,
-                        ),
+                        style: AllStyles.cartTotalSumTextStyle,
                       ),
                       Text(
                         '2 items',
-                        style: TextStyle(
-                          fontSize: 11.0,
-                          color: Colors.white.withOpacity(0.6),
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.07,
-                        ),
+                        style: AllStyles.cartTotalItemsTextStyle,
                       ),
                     ],
                   ),
@@ -225,13 +205,7 @@ class BottomNavButton extends StatelessWidget {
             ),
             Text(
               title,
-              style: TextStyle(
-                fontSize: 10,
-                letterSpacing: 0.07,
-                color: color,
-                height: 0.85,
-                fontWeight: FontWeight.w700,
-              ),
+              style: AllStyles.bottomNavBarItemTextStyle.copyWith(color: color),
             ),
           ],
         ),

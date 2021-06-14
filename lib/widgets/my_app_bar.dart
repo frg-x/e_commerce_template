@@ -1,3 +1,5 @@
+import 'package:e_commerce_template/constants.dart';
+import 'package:e_commerce_template/screens/get_started_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +16,7 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: [
-              Color(0xFF34283E),
-              Color(0xFF845FA1),
-            ],
+            colors: AllColors.purpleGradient,
           ),
         ),
         child: Stack(
@@ -33,24 +32,14 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
                     children: [
                       Text(
                         'My',
-                        style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w800,
-                          color: Color(0xFFE7B944),
-                          letterSpacing: 2.0,
-                        ),
+                        style: AllStyles.homeTitleTextStyle
+                            .copyWith(color: AllColors.mainYellow),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         'Shop',
-                        style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                          letterSpacing: 2.0,
-                        ),
+                        style: AllStyles.homeTitleTextStyle
+                            .copyWith(color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -65,6 +54,8 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
                       ),
                       onPressed: () {
                         FirebaseAuth.instance.signOut();
+                        Navigator.pushReplacementNamed(
+                            context, GetStarted.routeName);
                       },
                       child: Image.asset(
                         'assets/images/icons/bell_icon.png',
@@ -94,42 +85,8 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
                     ],
                   ),
                   child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Image.asset(
-                          'assets/images/icons/search_icon.png',
-                          width: 18.0,
-                          height: 18.0,
-                        ),
-                        //isDense: true,
-                        filled: true,
-                        focusColor: Colors.white,
-                        fillColor: Colors.white,
-                        contentPadding: EdgeInsets.only(top: 16),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        hintText: 'What are you looking for?',
-                        hintStyle: TextStyle(
-                          color: Color(0xFF9B9B9B),
-                          fontFamily: 'SF-Pro-Display',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.0,
-                        )),
-                    style: TextStyle(
-                      color: Color(0xFF9B9B9B),
-                      fontFamily: 'SF-Pro-Display',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14.0,
-                    ),
+                    decoration: searchInputDecoration(),
+                    style: AllStyles.SFProDisplay14w600lightGray,
                   ),
                 ),
               ),
@@ -137,6 +94,35 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
           ],
         ),
       ),
+    );
+  }
+
+  InputDecoration searchInputDecoration() {
+    return InputDecoration(
+      prefixIcon: Image.asset(
+        'assets/images/icons/search_icon.png',
+        width: 18.0,
+        height: 18.0,
+      ),
+      //isDense: true,
+      filled: true,
+      focusColor: Colors.white,
+      fillColor: Colors.white,
+      contentPadding: EdgeInsets.only(top: 16),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.white),
+        borderRadius: BorderRadius.circular(40),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.white),
+        borderRadius: BorderRadius.circular(40),
+      ),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.white),
+        borderRadius: BorderRadius.circular(40),
+      ),
+      hintText: 'What are you looking for?',
+      hintStyle: AllStyles.SFProDisplay14w600lightGray,
     );
   }
 }

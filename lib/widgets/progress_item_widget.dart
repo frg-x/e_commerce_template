@@ -1,4 +1,4 @@
-import 'package:e_commerce_template/dummy_data.dart';
+import 'package:e_commerce_template/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 

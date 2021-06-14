@@ -1,10 +1,14 @@
 import 'dart:ui' as ui;
+import 'package:e_commerce_template/constants.dart';
+import 'package:e_commerce_template/cubit/favorite_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteButton extends StatelessWidget {
   final bool favoriteStatus;
+  final String productId;
 
-  FavoriteButton({required this.favoriteStatus});
+  FavoriteButton({required this.favoriteStatus, required this.productId});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,7 @@ class FavoriteButton extends StatelessWidget {
           ? Icon(
               Icons.favorite,
               size: 20,
-              color: Color(0xFFE7B944),
+              color: AllColors.mainYellow,
             )
           : ShaderMask(
               blendMode: BlendMode.srcIn,
@@ -27,10 +31,7 @@ class FavoriteButton extends StatelessWidget {
                 return ui.Gradient.linear(
                   Offset(0, 20),
                   Offset(12, 8),
-                  [
-                    Color(0xFF34283E),
-                    Color(0xFF845FA1),
-                  ],
+                  AllColors.purpleGradient,
                 );
               },
               child: Icon(
@@ -38,7 +39,9 @@ class FavoriteButton extends StatelessWidget {
                 size: 20,
               ),
             ),
-      onPressed: () {},
+      onPressed: () {
+        context.read<FavoriteCubit>().toggleFavorite(productId);
+      },
     );
   }
 }

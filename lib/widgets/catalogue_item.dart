@@ -1,4 +1,6 @@
+import 'package:e_commerce_template/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class CatalogueItem extends StatelessWidget {
   CatalogueItem({@required this.title, @required this.image});
@@ -30,21 +32,16 @@ class CatalogueItem extends StatelessWidget {
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
               colors: [
-                Color(0xFF34283E).withOpacity(1.0),
-                Color(0xFF34283E).withOpacity(0.2),
+                AllColors.deepPurple.withOpacity(1.0),
+                AllColors.deepPurple.withOpacity(0.2),
               ],
             ),
           ),
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'SF-Pro-Text',
-              fontWeight: FontWeight.w600,
-              fontSize: 14.0,
-              color: Colors.white,
-              letterSpacing: -0.15,
-            ),
+            style: AllStyles.homeCatItemTextStyle,
+            maxLines: 2,
           ),
         ),
       ],

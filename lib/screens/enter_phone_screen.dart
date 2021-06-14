@@ -3,6 +3,7 @@ import 'package:e_commerce_template/screens/verification_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:e_commerce_template/constants.dart';
 
 class EnterPhoneScreen extends StatefulWidget {
   static const routeName = '/enter-phone';
@@ -59,6 +60,58 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
     var selectedCountry =
         widget.countries.firstWhere((item) => item['country'] == dropDownValue);
 
+    InputDecoration phoneNumInputDecoration = InputDecoration(
+      contentPadding: EdgeInsets.symmetric(
+        vertical: 20.0,
+      ),
+      prefixIcon: Container(
+        padding: EdgeInsets.only(left: 18.0),
+        width: 70.0,
+        child: Row(
+          children: [
+            Image.asset(
+              'assets/images/countries/${selectedCountry['country']}.png',
+              width: 24.0,
+              height: 24.0,
+            ),
+            SizedBox(
+              child: Icon(Icons.keyboard_arrow_down),
+              width: 8.0,
+            ),
+          ],
+        ),
+      ),
+      prefixStyle: TextStyle(
+        color: AllColors.lightPurpleGray,
+        fontSize: 19.0,
+        fontWeight: FontWeight.w400,
+      ),
+      prefixText: '${selectedCountry['code']} ',
+      suffixIcon: IconButton(
+        icon: showClearIcon ? Icon(Icons.clear) : Container(),
+        color: Colors.black54,
+        onPressed: _clearText,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(
+          const Radius.circular(8.0),
+        ),
+        borderSide: BorderSide(color: AllColors.phoneNumTextFieldBorder),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: const BorderRadius.all(
+          const Radius.circular(8.0),
+        ),
+        borderSide: BorderSide(color: AllColors.phoneNumTextFieldBorder),
+      ),
+      hintText: '(99) 999 99 99',
+      hintStyle: TextStyle(
+        color: AllColors.phoneNumTextFieldBorder,
+        fontSize: 19.0,
+        fontWeight: FontWeight.w400,
+      ),
+    );
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -74,21 +127,12 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                 gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [
-                    Color(0xFF34283E),
-                    Color(0xFF845FA1),
-                  ],
+                  colors: AllColors.purpleGradient,
                 ),
               ),
               child: Text(
                 'What Is Your Phone \nNumber?',
-                style: TextStyle(
-                  fontFamily: 'SF-Pro-Display',
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                  height: 1.24,
-                ),
+                style: AllStyles.SFProDisplay25w700white.copyWith(height: 1.24),
               ),
             ),
             Padding(
@@ -99,10 +143,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                   Text(
                     'Please enter your phone number to verify your account',
                     softWrap: true,
-                    style: TextStyle(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: AllStyles.fontSize17w400,
                   ),
                   SizedBox(height: 24.0),
                   TextField(
@@ -113,59 +154,9 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                     inputFormatters: [maskFormatter],
                     style: TextStyle(
                       fontSize: 19.0,
-                      color: Color(0xFF605A65),
+                      color: AllColors.lightPurpleGray,
                     ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 20.0,
-                      ),
-                      prefixIcon: Container(
-                        padding: EdgeInsets.only(left: 18.0),
-                        width: 70.0,
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/countries/${selectedCountry['country']}.png',
-                              width: 24.0,
-                              height: 24.0,
-                            ),
-                            SizedBox(
-                              child: Icon(Icons.keyboard_arrow_down),
-                              width: 8.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                      prefixStyle: TextStyle(
-                        color: Color(0xFF605A65),
-                        fontSize: 19.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      prefixText: '${selectedCountry['code']} ',
-                      suffixIcon: IconButton(
-                        icon: showClearIcon ? Icon(Icons.clear) : Container(),
-                        color: Colors.black54,
-                        onPressed: _clearText,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: const BorderRadius.all(
-                          const Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide(color: Color(0xFFE1E1E1)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: const BorderRadius.all(
-                          const Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide(color: Color(0xFFE1E1E1)),
-                      ),
-                      hintText: '(99) 999 99 99',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFE1E1E1),
-                        fontSize: 19.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    decoration: phoneNumInputDecoration,
                   ),
                   SizedBox(height: 24.0),
                   SizedBox(
@@ -183,10 +174,10 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                       style: ButtonStyle(
                         backgroundColor: showNextStep
                             ? MaterialStateProperty.all<Color>(
-                                Color(0xFFE7B944),
+                                AllColors.mainYellow,
                               )
                             : MaterialStateProperty.all<Color>(
-                                Color(0xFF9B9B9B)),
+                                AllColors.lightGray),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -196,11 +187,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                       ),
                       child: Text(
                         'Send Verification Code',
-                        style: TextStyle(
-                          fontSize: 17.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
+                        style: AllStyles.fontSize17w700white,
                       ),
                     ),
                   ),
@@ -211,11 +198,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                     },
                     child: Text(
                       'Skip',
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Color(0xFF9B9B9B),
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: AllStyles.fontSize17w700lightGray,
                     ),
                   ),
                 ],

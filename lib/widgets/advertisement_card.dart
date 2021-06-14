@@ -1,3 +1,4 @@
+import 'package:e_commerce_template/constants.dart';
 import 'package:flutter/material.dart';
 
 class AdvertisementCard extends StatelessWidget {
@@ -24,10 +25,7 @@ class AdvertisementCard extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              colors: [
-                Color(0xFF34283E).withOpacity(1.0),
-                Color(0xFF1D2332).withOpacity(0.2),
-              ],
+              colors: AllColors.advCardOverlayGradient,
             ),
           ),
         ),
@@ -38,12 +36,7 @@ class AdvertisementCard extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(
-                  fontFamily: 'SF-Pro-Display',
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
+                style: AllStyles.SFProDisplay25w700white,
                 textAlign: TextAlign.start,
               ),
               SizedBox(height: 4),
@@ -51,18 +44,13 @@ class AdvertisementCard extends StatelessWidget {
                 children: [
                   Text(
                     'See more',
-                    style: TextStyle(
-                      fontFamily: 'SF-Pro-Text',
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFFE7B944),
-                    ),
+                    style: AllStyles.SFProText12w700mainYellow,
                   ),
                   SizedBox(width: 2.0),
                   Icon(
                     Icons.arrow_forward_ios_outlined,
                     size: 14.0,
-                    color: Color(0xFFE7B944),
+                    color: AllColors.mainYellow,
                   ),
                 ],
               ),

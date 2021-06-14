@@ -1,12 +1,17 @@
-import 'package:e_commerce_template/dummy_data.dart';
-import 'package:e_commerce_template/screens/favorite_button.dart';
+import 'package:e_commerce_template/constants.dart';
+import 'package:e_commerce_template/cubit/ads_cubit.dart';
+import 'package:e_commerce_template/widgets/catalogue_carousel.dart';
+import 'package:e_commerce_template/widgets/featured_products.dart';
+import 'package:e_commerce_template/widgets/loading_indicator.dart';
 import 'package:e_commerce_template/widgets/advertisement_card.dart';
-import 'package:e_commerce_template/widgets/catalogue_item.dart';
 import 'package:e_commerce_template/widgets/progress_item_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeName = '/home';
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -14,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   String? uid;
+  User? loggedInUser = FirebaseAuth.instance.currentUser;
   PageController _pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
   int _lastIndex = 0;
@@ -29,11 +35,8 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   void didChangeDependencies() {
-    if (FirebaseAuth.instance.currentUser != null) {
-      uid = FirebaseAuth.instance.currentUser!.uid;
-      print(FirebaseAuth.instance.currentUser!.phoneNumber);
-    }
     //print(uid);
+    //print('LOGGED: $loggedInUser');
     super.didChangeDependencies();
   }
 
@@ -47,6 +50,11 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
+
+    if (loggedInUser?.uid != null) {
+      //createNewUser();
+      this.uid = loggedInUser?.uid;
+    }
 
     setState(() {
       animationStatus[0] = true;
@@ -103,50 +111,69 @@ class _HomeScreenState extends State<HomeScreen>
           ),
           child: Column(
             children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 98.0,
-                    width: MediaQuery.of(context).size.width,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                      child: PageView.builder(
-                        controller: _pageController,
-                        itemBuilder: (context, index) {
-                          return AdvertisementCard(
-                            title: progressItemList[index].title,
-                            image: progressItemList[index].bgImage,
-                          );
-                        },
-                        onPageChanged: (_) {
-                          _animationController.forward();
-                          setState(() {
-                            if (_lastIndex == 5 && !animationStatus[0])
-                              animationStatus[0] = true;
-                          });
-                        },
-                        itemCount: progressItemList.length,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 5,
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width - 32,
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            for (final animation in animationStatus)
-                              ProgressItemWidget(animationStatus: animation)
-                          ],
-                          //_selectedIndex
+              BlocConsumer<AdsCubit, GetAdsState>(
+                listener: (context, state) {
+                  if (state is GetAdsError) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(state.message),
+                    ));
+                  }
+                },
+                builder: (context, state) {
+                  if (state is GetAdsLoading) {
+                    return LoadingIndicator(height: 98.0);
+                  } else if (state is GetAdsLoaded) {
+                    final ads = state.ads;
+                    return Stack(
+                      children: [
+                        Container(
+                          height: 98.0,
+                          width: MediaQuery.of(context).size.width,
+                          child: ClipRRect(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(8.0)),
+                            child: PageView.builder(
+                              controller: _pageController,
+                              itemBuilder: (context, index) {
+                                return AdvertisementCard(
+                                  title: ads[index].title,
+                                  image: ads[index].image,
+                                );
+                              },
+                              onPageChanged: (_) {
+                                _animationController.forward();
+                                setState(() {
+                                  if (_lastIndex == 5 && !animationStatus[0])
+                                    animationStatus[0] = true;
+                                });
+                              },
+                              itemCount: 5,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                ],
+                        Positioned(
+                          bottom: 5,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width - 32,
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 8, right: 8),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  for (final animation in animationStatus)
+                                    ProgressItemWidget(
+                                        animationStatus: animation)
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
               ),
               SizedBox(height: 28.0),
               GestureDetector(
@@ -158,30 +185,19 @@ class _HomeScreenState extends State<HomeScreen>
                   children: [
                     Text(
                       'Catalogue',
-                      style: TextStyle(
-                        fontFamily: 'SF-Pro-Text',
-                        fontWeight: FontWeight.w700,
-                        fontSize: 19.0,
-                        letterSpacing: -0.49,
-                        color: Color(0xFF34283E),
-                      ),
+                      style: AllStyles.homeCatTitleTextStyle,
                     ),
                     Row(
                       children: [
                         Text(
                           'See All',
-                          style: TextStyle(
-                            fontFamily: 'SF-Pro-Text',
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xFF9B9B9B),
-                          ),
+                          style: AllStyles.SFProText12w700lightGray,
                         ),
                         SizedBox(width: 2.0),
                         Icon(
                           Icons.arrow_forward_ios_outlined,
                           size: 14.0,
-                          color: Color(0xFF9B9B9B),
+                          color: AllColors.lightGray,
                         ),
                       ],
                     ),
@@ -189,201 +205,21 @@ class _HomeScreenState extends State<HomeScreen>
                 ),
               ),
               SizedBox(height: 18.0),
-              Container(
-                height: 92.0,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.separated(
-                  itemCount: categoryItems.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, int index) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                      child: CatalogueItem(
-                        title: categoryItems[index]['title'],
-                        image: categoryItems[index]['image'],
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, int index) {
-                    return SizedBox(width: 16.0);
-                  },
-                ),
-              ),
+              CatalogueCarousel(),
               SizedBox(height: 32.0),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Featured',
-                  style: TextStyle(
-                    fontFamily: 'SF-Pro-Text',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 19.0,
-                    letterSpacing: -0.49,
-                    color: Color(0xFF34283E),
-                  ),
+                  style: AllStyles.homeCatTitleTextStyle,
                 ),
               ),
               SizedBox(
                 height: 16.0,
               ),
-              GridView.builder(
-                padding: EdgeInsets.only(top: 0.0),
-                shrinkWrap: true,
-                primary: false,
-                itemBuilder: (context, int index) {
-                  return Column(
-                    children: [
-                      Stack(
-                        clipBehavior: Clip.none,
-                        alignment: Alignment.bottomRight,
-                        children: [
-                          Container(
-                            width: 165,
-                            height: 165,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              color: Colors.white,
-                              image: DecorationImage(
-                                  image: AssetImage(items[index]['image'])),
-                            ),
-                          ),
-                          Positioned(
-                            height: 36,
-                            width: 36,
-                            child: FavoriteButton(
-                              favoriteStatus: items[index]['isFavorite'],
-                            ),
-                            bottom: -10,
-                            right: 8,
-                          ),
-                          items[index]['discount'] != 0
-                              ? Positioned(
-                                  // height: 36,
-                                  // width: 36,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(40.0),
-                                        bottomRight: Radius.circular(40.0),
-                                      ),
-                                      gradient: LinearGradient(
-                                        transform: GradientRotation(72 / 360),
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.centerRight,
-                                        colors: [
-                                          Color(0xFFD23A3A),
-                                          Color(0xFFF49763),
-                                        ],
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        '-${items[index]['discount']}%',
-                                        style: TextStyle(
-                                          fontSize: 11.0,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                    width: 47.0,
-                                    height: 20.0,
-                                  ),
-                                  top: 8,
-                                  left: 0,
-                                )
-                              : Container(),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Row(
-                          children: List.generate(
-                            items[index]['rating'],
-                            (i) => Icon(
-                              Icons.star,
-                              color: Color(0xFFF2994A),
-                              size: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        items[index]['title'].toString(),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          letterSpacing: -0.15,
-                          color: Color(0xFF34283E),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6.0),
-                        child: items[index]['discount'] != 0
-                            ? Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    '\$${((items[index]['price'] * items[index]['discount'] / 100) as double).floor().toStringAsFixed(0)}',
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: -0.41,
-                                      color: Color(0xFFCE3E3E),
-                                    ),
-                                  ),
-                                  SizedBox(width: 4.0),
-                                  Text(
-                                    '\$${items[index]['price']}',
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      letterSpacing: -0.15,
-                                      color: Color(0xFF9B9B9B),
-                                      decoration: TextDecoration.lineThrough,
-                                    ),
-                                  ),
-                                ],
-                              )
-                            : Row(
-                                children: [
-                                  Text(
-                                    '\$${items[index]['price']}',
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: -0.41,
-                                      color: Color(0xFF34283E),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                      ),
-                    ],
-                  );
-                },
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 17.0,
-                  mainAxisSpacing: 17.0,
-                  childAspectRatio: 0.55,
-                ),
-                itemCount: items.length,
-              ),
+              FeaturedProducts(),
               SizedBox(height: 30),
-              SizedBox(
-                width: 40,
-                height: 40,
-                child: CircularProgressIndicator(
-                  color: Color(0xFF663399),
-                  strokeWidth: 5,
-                ),
-              ),
+              LoadingIndicator(height: 40.0),
               SizedBox(height: 100),
             ],
           ),

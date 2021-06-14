@@ -1,7 +1,10 @@
+import 'package:e_commerce_template/constants.dart';
 import 'package:flutter/material.dart';
 import 'enter_phone_screen.dart';
 
 class GetStarted extends StatefulWidget {
+  static const routeName = '/get-started';
+
   @override
   _GetStartedState createState() => _GetStartedState();
 }
@@ -24,7 +27,7 @@ class _GetStartedState extends State<GetStarted> {
             Container(
               height: 560,
               width: MediaQuery.of(context).size.width,
-              color: Color(0xFF2A034B).withAlpha(77),
+              color: AllColors.getStartedContainerOverlay.withAlpha(77),
             ),
             Positioned(
               right: 0,
@@ -36,7 +39,7 @@ class _GetStartedState extends State<GetStarted> {
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(300.0),
                   ),
-                  color: Color(0xFFE7B944).withAlpha(179),
+                  color: AllColors.mainYellow.withAlpha(179),
                 ),
               ),
             ),
@@ -49,10 +52,7 @@ class _GetStartedState extends State<GetStarted> {
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
-                    colors: [
-                      Color(0xFF34283E),
-                      Color(0xFF845FA1),
-                    ],
+                    colors: AllColors.purpleGradient,
                   ),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40.0),
@@ -69,22 +69,12 @@ class _GetStartedState extends State<GetStarted> {
                       children: [
                         Text(
                           'My',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 31.0,
-                            fontWeight: FontWeight.w800,
-                            color: Color(0xFFE7B944),
-                          ),
+                          style: AllStyles.getStartedTitle31_My,
                           textAlign: TextAlign.center,
                         ),
                         Text(
                           'Shop',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 31.0,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                          ),
+                          style: AllStyles.getStartedTitle31_Shop,
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -92,12 +82,7 @@ class _GetStartedState extends State<GetStarted> {
                     SizedBox(height: 32.0),
                     Text(
                       'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        height: 1.35,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                      ),
+                      style: AllStyles.getStartedSubText,
                       textAlign: TextAlign.center,
                       softWrap: true,
                     ),
@@ -110,24 +95,10 @@ class _GetStartedState extends State<GetStarted> {
                           Navigator.pushReplacementNamed(
                               context, EnterPhoneScreen.routeName);
                         },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            Color(0xFFE7B944),
-                          ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
+                        style: AllStyles.getStartedMainButtonStyle,
                         child: Text(
                           'Get Started',
-                          style: TextStyle(
-                            fontSize: 17.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                          ),
+                          style: AllStyles.fontSize17w700white,
                         ),
                       ),
                     ),
