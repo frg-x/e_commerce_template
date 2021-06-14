@@ -58,7 +58,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
                               var favProducts = snapshot.data['favProducts'];
-                              print(favProducts);
+                              //print(favProducts);
                               //print(context.read<FavoriteCubit>().favProducts);
                               return FavoriteButton(
                                 favoriteStatus: favProducts
