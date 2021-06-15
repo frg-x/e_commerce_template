@@ -38,7 +38,7 @@ class CatalogueAppBar extends StatelessWidget with PreferredSizeWidget {
                       onPressed: () {
                         int lastState = context
                             .read<ToggleBotNavBarCubit>()
-                            .lastSelectedState;
+                            .lastSelectedIndex;
                         context
                             .read<ToggleBotNavBarCubit>()
                             .toggleBottomNavBarMenu(lastState);
