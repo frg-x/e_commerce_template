@@ -6,15 +6,13 @@ class FavoriteCubit extends Cubit<GetFavoriteState> {
   final ShopRepository _shopRepository;
   String userId = '';
   List<String> favProducts = [];
+  bool isLogged = false;
 
   FavoriteCubit(this._shopRepository) : super(GetFavoriteInitial());
 
   Future<void> setUserId(String uid) async {
     userId = uid;
-  }
-
-  Future<String> getUserId() async {
-    return userId;
+    isLogged = true;
   }
 
   Future<void> getFavorite() async {

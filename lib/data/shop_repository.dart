@@ -33,10 +33,10 @@ class ShopRepository {
     querySnapshot.docs.forEach((cat) {
       var categoryData = cat.data() as Map<String, dynamic>;
       Category category = Category(
-        id: categoryData['id'],
-        title: categoryData['title'],
-        image: categoryData['image'],
-      );
+          id: categoryData['id'],
+          title: categoryData['title'],
+          image: categoryData['image'],
+          subCategories: categoryData['sub_categories']);
       categoryList.add(category);
     });
     return categoryList;

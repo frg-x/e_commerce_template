@@ -76,6 +76,7 @@ class AllStyles {
     fontSize: 17.0,
     fontWeight: FontWeight.w700,
   );
+
   static const fontSize14w400 = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
@@ -214,5 +215,60 @@ class AllStyles {
     fontSize: 11.0,
     color: Colors.white,
     fontWeight: FontWeight.w700,
+  );
+
+  static const fontSize17w700deepPurple = TextStyle(
+    fontSize: 17.0,
+    fontWeight: FontWeight.w700,
+    color: AllColors.deepPurple,
+    letterSpacing: -0.41,
+  );
+
+  static const fontSize19w700deepPurple = TextStyle(
+    fontSize: 19.0,
+    fontWeight: FontWeight.w700,
+    color: AllColors.deepPurple,
+    letterSpacing: -0.49,
+  );
+
+  static const fontSize19w700white = TextStyle(
+    fontSize: 19.0,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+    letterSpacing: -0.49,
+  );
+
+  static const fontSize14w400lightPurpleGray = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+    color: AllColors.lightPurpleGray,
+    letterSpacing: -0.15,
+  );
+
+  static final InputDecoration searchInputDecoration = InputDecoration(
+    prefixIcon: Image.asset(
+      'assets/images/icons/search_icon.png',
+      width: 18.0,
+      height: 18.0,
+    ),
+    //isDense: true,
+    filled: true,
+    focusColor: Colors.white,
+    fillColor: Colors.white,
+    contentPadding: EdgeInsets.only(top: 16),
+    border: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.white),
+      borderRadius: BorderRadius.circular(40),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.white),
+      borderRadius: BorderRadius.circular(40),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.white),
+      borderRadius: BorderRadius.circular(40),
+    ),
+    hintText: 'What are you looking for?',
+    hintStyle: AllStyles.SFProDisplay14w600lightGray,
   );
 }

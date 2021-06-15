@@ -3,7 +3,7 @@ import 'package:e_commerce_template/screens/get_started_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatelessWidget with PreferredSizeWidget {
+class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize = Size.fromHeight(110.0);
   @override
   Widget build(BuildContext context) {
@@ -53,9 +53,7 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
                         alignment: Alignment.centerRight,
                       ),
                       onPressed: () {
-                        FirebaseAuth.instance.signOut();
-                        Navigator.pushReplacementNamed(
-                            context, GetStarted.routeName);
+                        showAlertDialog(context);
                       },
                       child: Image.asset(
                         'assets/images/icons/bell_icon.png',
@@ -85,7 +83,7 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
                     ],
                   ),
                   child: TextField(
-                    decoration: searchInputDecoration(),
+                    decoration: AllStyles.searchInputDecoration,
                     style: AllStyles.SFProDisplay14w600lightGray,
                   ),
                 ),
@@ -96,33 +94,39 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
     );
   }
+}
 
-  InputDecoration searchInputDecoration() {
-    return InputDecoration(
-      prefixIcon: Image.asset(
-        'assets/images/icons/search_icon.png',
-        width: 18.0,
-        height: 18.0,
-      ),
-      //isDense: true,
-      filled: true,
-      focusColor: Colors.white,
-      fillColor: Colors.white,
-      contentPadding: EdgeInsets.only(top: 16),
-      border: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.white),
-        borderRadius: BorderRadius.circular(40),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.white),
-        borderRadius: BorderRadius.circular(40),
-      ),
-      enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.white),
-        borderRadius: BorderRadius.circular(40),
-      ),
-      hintText: 'What are you looking for?',
-      hintStyle: AllStyles.SFProDisplay14w600lightGray,
-    );
-  }
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("Cancel"),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  );
+  Widget yesButton = TextButton(
+    child: Text("Yes"),
+    onPressed: () {
+      FirebaseAuth.instance.signOut();
+      Navigator.pushReplacementNamed(context, GetStarted.routeName);
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Warning"),
+    content: Text("Would you like to Sign out?"),
+    actions: [
+      yesButton,
+      cancelButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

@@ -1,11 +1,10 @@
 import 'package:e_commerce_template/constants.dart';
+import 'package:e_commerce_template/cubit/toggle_botnavbar_cubit.dart';
+import 'package:e_commerce_template/cubit/user_status_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyBottomNavBar extends StatefulWidget {
-  final Function selectPage;
-
-  MyBottomNavBar(this.selectPage);
-
   @override
   _MyBottomNavBarState createState() => _MyBottomNavBarState();
 }
@@ -14,7 +13,6 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
   late bool isCartOpened;
   late double cartOffset;
   late double bottomIconsOffset;
-  int _activeTab = 0;
 
   void slideCart() {
     if (isCartOpened) {
@@ -48,6 +46,19 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
         Container(
           height: 87.0,
           width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24.0),
+              topRight: Radius.circular(24.0),
+            ),
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(5.0, 0),
+                blurRadius: 15.0,
+                color: Colors.black.withOpacity(0.05),
+              ),
+            ],
+          ),
           child: ClipRRect(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(24.0),
@@ -60,54 +71,74 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                 children: [
                   BottomNavButton(
                     title: 'Home',
-                    image: _activeTab == 0
-                        ? 'assets/images/icons/home_icon_active.png'
-                        : 'assets/images/icons/home_icon.png',
-                    color: _activeTab == 0
-                        ? AllColors.activeTabTextColor
-                        : AllColors.lightGray,
+                    image:
+                        context.read<ToggleBotNavBarCubit>().selectedIndex == 0
+                            ? 'assets/images/icons/home_icon_active.png'
+                            : 'assets/images/icons/home_icon.png',
+                    color:
+                        context.read<ToggleBotNavBarCubit>().selectedIndex == 0
+                            ? AllColors.activeTabTextColor
+                            : AllColors.lightGray,
                     onPress: () {
-                      widget.selectPage(0);
-                      _activeTab = 0;
+                      setState(() {
+                        context
+                            .read<ToggleBotNavBarCubit>()
+                            .toggleBottomNavBarMenu(0);
+                      });
                     },
                   ),
                   BottomNavButton(
                     title: 'Catalogue',
-                    image: _activeTab == 1
-                        ? 'assets/images/icons/cat_icon_active.png'
-                        : 'assets/images/icons/cat_icon.png',
-                    color: _activeTab == 1
-                        ? AllColors.activeTabTextColor
-                        : AllColors.lightGray,
+                    image:
+                        context.read<ToggleBotNavBarCubit>().selectedIndex == 1
+                            ? 'assets/images/icons/cat_icon_active.png'
+                            : 'assets/images/icons/cat_icon.png',
+                    color:
+                        context.read<ToggleBotNavBarCubit>().selectedIndex == 1
+                            ? AllColors.activeTabTextColor
+                            : AllColors.lightGray,
                     onPress: () {
-                      widget.selectPage(1);
-                      _activeTab = 1;
+                      setState(() {
+                        context
+                            .read<ToggleBotNavBarCubit>()
+                            .toggleBottomNavBarMenu(1);
+                      });
                     },
                   ),
                   BottomNavButton(
                     title: 'Favorite',
-                    image: _activeTab == 2
-                        ? 'assets/images/icons/fav_icon_active.png'
-                        : 'assets/images/icons/fav_icon.png',
-                    color: _activeTab == 2
-                        ? AllColors.activeTabTextColor
-                        : AllColors.lightGray,
+                    image:
+                        context.read<ToggleBotNavBarCubit>().selectedIndex == 2
+                            ? 'assets/images/icons/fav_icon_active.png'
+                            : 'assets/images/icons/fav_icon.png',
+                    color:
+                        context.read<ToggleBotNavBarCubit>().selectedIndex == 2
+                            ? AllColors.activeTabTextColor
+                            : AllColors.lightGray,
                     onPress: () {
-                      widget.selectPage(2);
-                      _activeTab = 2;
+                      setState(() {
+                        context
+                            .read<ToggleBotNavBarCubit>()
+                            .toggleBottomNavBarMenu(2);
+                      });
                     },
                   ),
                   BottomNavButton(
                     title: 'Profile',
-                    image: _activeTab == 3
-                        ? 'assets/images/icons/profile_icon_active.png'
-                        : 'assets/images/icons/profile_icon.png',
-                    color: _activeTab == 3
-                        ? AllColors.activeTabTextColor
-                        : AllColors.lightGray,
+                    image:
+                        context.read<ToggleBotNavBarCubit>().selectedIndex == 3
+                            ? 'assets/images/icons/profile_icon_active.png'
+                            : 'assets/images/icons/profile_icon.png',
+                    color:
+                        context.read<ToggleBotNavBarCubit>().selectedIndex == 3
+                            ? AllColors.activeTabTextColor
+                            : AllColors.lightGray,
                     onPress: () {
-                      widget.selectPage(3);
-                      _activeTab = 3;
+                      setState(() {
+                        context
+                            .read<ToggleBotNavBarCubit>()
+                            .toggleBottomNavBarMenu(3);
+                      });
                     },
                   ),
                   AnimatedContainer(

@@ -16,6 +16,7 @@ class FeaturedProducts extends StatefulWidget {
 class _FeaturedProductsState extends State<FeaturedProducts> {
   @override
   Widget build(BuildContext context) {
+    print(context.read<FavoriteCubit>().isLogged);
     return BlocBuilder<ProductsCubit, GetProductsState>(
         builder: (context, state) {
       //print(state);
@@ -50,28 +51,29 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                       Positioned(
                         height: 36,
                         width: 36,
-                        child: StreamBuilder<dynamic>(
-                          stream: FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(context.read<FavoriteCubit>().userId)
-                              .snapshots(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              var favProducts = snapshot.data['favProducts'];
-                              //print(favProducts);
-                              //print(context.read<FavoriteCubit>().favProducts);
-                              return FavoriteButton(
-                                favoriteStatus: favProducts
-                                        .contains(productItemList[index].id)
-                                    ? true
-                                    : false,
-                                productId: productItemList[index].id,
-                              );
-                            } else
-                              return Icon(Icons.error_outline,
-                                  color: Colors.grey[400]);
-                          },
-                        ),
+                        child: context.read<FavoriteCubit>().isLogged
+                            ? StreamBuilder<dynamic>(
+                                stream: FirebaseFirestore.instance
+                                    .collection('users')
+                                    .doc(context.read<FavoriteCubit>().userId)
+                                    .snapshots(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    var favProducts =
+                                        snapshot.data['favProducts'];
+                                    return FavoriteButton(
+                                      favoriteStatus: favProducts.contains(
+                                              productItemList[index].id)
+                                          ? true
+                                          : false,
+                                      productId: productItemList[index].id,
+                                    );
+                                  } else
+                                    return Icon(Icons.error_outline,
+                                        color: Colors.grey[400]);
+                                },
+                              )
+                            : Container(),
                         bottom: -10,
                         right: 8,
                       ),
@@ -154,10 +156,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                               Text(
                                 '\$${productItemList[index].price}',
                                 maxLines: 1,
-                                style: AllStyles.fontSize17w700.copyWith(
-                                  letterSpacing: -0.41,
-                                  color: AllColors.deepPurple,
-                                ),
+                                style: AllStyles.fontSize17w700deepPurple,
                               ),
                             ],
                           ),

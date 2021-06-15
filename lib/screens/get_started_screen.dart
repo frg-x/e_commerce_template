@@ -20,7 +20,6 @@ class _GetStartedState extends State<GetStarted> {
             Image.asset(
               'assets/images/main_gif.gif',
               fit: BoxFit.cover,
-              //width: double.infinity,
               scale: 0.5,
               height: 600,
             ),

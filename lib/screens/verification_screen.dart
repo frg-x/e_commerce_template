@@ -43,7 +43,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   }
 
   Future _verifyPinCode() async {
-    print(otp);
+    //print(otp);
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (PhoneAuthCredential credential) async {
