@@ -7,7 +7,9 @@ import 'package:e_commerce_template/cubit/toggle_botnavbar_cubit.dart';
 import 'package:e_commerce_template/cubit/user_status_cubit.dart';
 import 'package:e_commerce_template/data/shop_repository.dart';
 import 'package:e_commerce_template/screens/enter_phone_screen.dart';
+import 'package:e_commerce_template/screens/fliter_screen.dart';
 import 'package:e_commerce_template/screens/get_started_screen.dart';
+import 'package:e_commerce_template/screens/subcatalogue_screen.dart';
 import 'package:e_commerce_template/screens/tabs_screen.dart';
 import 'package:e_commerce_template/screens/verification_screen.dart';
 import 'package:e_commerce_template/screens/verify_user_status_screen.dart';
@@ -51,6 +53,8 @@ class MyApp extends StatelessWidget {
           EnterPhoneScreen.routeName: (context) => EnterPhoneScreen(),
           VerificationScreen.routeName: (context) => VerificationScreen(),
           TabsScreen.routeName: (context) => TabsScreen(),
+          SubCatalogueScreen.routeName: (context) => SubCatalogueScreen(),
+          FilterScreen.routeName: (context) => FilterScreen(),
         },
       ),
     );

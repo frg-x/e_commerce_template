@@ -1,4 +1,8 @@
 import 'dart:ui';
+import 'package:e_commerce_template/screens/catalogue_screen.dart';
+import 'package:e_commerce_template/screens/home_screen.dart';
+import 'package:e_commerce_template/widgets/appbar/catalogue_appbar.dart';
+import 'package:e_commerce_template/widgets/appbar/home_appbar.dart';
 import 'package:flutter/material.dart';
 
 const int autoScrollDuration = 5;
@@ -80,6 +84,24 @@ class AllStyles {
   static const fontSize14w400 = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
+  );
+
+  static const fontSize14w400white = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const fontSize14w600 = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w600,
+    letterSpacing: -0.15,
+    color: Colors.white,
+  );
+
+  static const fontSize13w500 = TextStyle(
+    fontSize: 13.0,
+    fontWeight: FontWeight.w500,
   );
 
   static const fontSize17w700lightGray = TextStyle(
@@ -217,6 +239,18 @@ class AllStyles {
     fontWeight: FontWeight.w700,
   );
 
+  static const fontSize12w700lightGray = TextStyle(
+    fontSize: 12.0,
+    color: AllColors.lightGray,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const fontSize12w700deepPurple = TextStyle(
+    fontSize: 12.0,
+    color: AllColors.deepPurple,
+    fontWeight: FontWeight.w700,
+  );
+
   static const fontSize17w700deepPurple = TextStyle(
     fontSize: 17.0,
     fontWeight: FontWeight.w700,
@@ -272,3 +306,30 @@ class AllStyles {
     hintStyle: AllStyles.SFProDisplay14w600lightGray,
   );
 }
+
+final List<Map<String, dynamic>> tabPages = [
+  {
+    'body': HomeScreen(),
+    'appBar': HomeAppBar(),
+  },
+  {
+    'body': CatalogueScreen(),
+    'appBar': CatalogueAppBar(),
+  },
+  {
+    'body': Container(
+      child: Center(child: Text('Favorite')),
+    ),
+    'appBar': AppBar(
+      title: Text('Favorite'),
+    )
+  },
+  {
+    'body': Container(
+      child: Center(child: Text('Profile')),
+    ),
+    'appBar': AppBar(
+      title: Text('Profile'),
+    ),
+  }
+];

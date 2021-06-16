@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/model/category.dart';
+import 'package:e_commerce_template/screens/subcatalogue_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -59,8 +60,12 @@ class CatalogueScreenItem extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        //...
-                        print('Next to ${category.subCategories[index]['id']}');
+                        Navigator.popAndPushNamed(
+                            context, SubCatalogueScreen.routeName,
+                            arguments: {
+                              'id': category.subCategories[index]['id'],
+                              'title': category.subCategories[index]['title']
+                            });
                       },
                       child: Container(
                         padding:

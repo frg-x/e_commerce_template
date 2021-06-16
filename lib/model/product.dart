@@ -6,7 +6,9 @@ class Product {
   double price;
   double discount;
   int rating;
-  List<String> sizes = [];
+  List<dynamic> inCategories = [];
+  List<dynamic> sizes = [];
+  List<dynamic> colors = [];
   Product({
     required this.id,
     required this.title,
@@ -15,6 +17,9 @@ class Product {
     required this.price,
     required this.discount,
     required this.rating,
+    required this.inCategories,
+    required this.sizes,
+    required this.colors,
   });
   @override
   bool operator ==(Object other) {

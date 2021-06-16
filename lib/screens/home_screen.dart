@@ -1,6 +1,5 @@
 import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/cubit/ads_cubit.dart';
-import 'package:e_commerce_template/cubit/user_status_cubit.dart';
 import 'package:e_commerce_template/widgets/catalogue_carousel.dart';
 import 'package:e_commerce_template/widgets/featured_products.dart';
 import 'package:e_commerce_template/widgets/loading_indicator.dart';
