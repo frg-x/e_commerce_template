@@ -4,7 +4,9 @@ import 'package:e_commerce_template/cubit/favorite_cubit.dart';
 import 'package:e_commerce_template/cubit/products_cubit.dart';
 import 'package:e_commerce_template/model/product.dart';
 import 'package:e_commerce_template/screens/favorite_button.dart';
+import 'package:e_commerce_template/widgets/custom_sliver_grid_delegate.dart';
 import 'package:e_commerce_template/widgets/loading_indicator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +18,7 @@ class FeaturedProducts extends StatefulWidget {
 class _FeaturedProductsState extends State<FeaturedProducts> {
   @override
   Widget build(BuildContext context) {
-    print(context.read<FavoriteCubit>().isLogged);
+    //print(context.read<FavoriteCubit>().isLogged);
     return BlocBuilder<ProductsCubit, GetProductsState>(
         builder: (context, state) {
       //print(state);
@@ -45,7 +47,9 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                           borderRadius: BorderRadius.circular(8.0),
                           color: Colors.white,
                           image: DecorationImage(
-                              image: AssetImage(productItemList[index].image)),
+                            image: AssetImage(productItemList[index].image),
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                       Positioned(
@@ -164,12 +168,19 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                 ],
               );
             },
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
               crossAxisCount: 2,
               crossAxisSpacing: 17.0,
               mainAxisSpacing: 17.0,
-              childAspectRatio: 0.65,
+              height: 265,
             ),
+            // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //   crossAxisCount: 2,
+            //   crossAxisSpacing: 17.0,
+            //   mainAxisSpacing: 17.0,
+            //   childAspectRatio: 0.65,
+            // ),
             itemCount: 4 /*productItemList.length*/
             );
       } else {
