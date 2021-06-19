@@ -1,17 +1,20 @@
 import 'package:e_commerce_template/constants.dart';
-import 'package:e_commerce_template/cubit/ads_cubit.dart';
-import 'package:e_commerce_template/cubit/categories_cubit.dart';
-import 'package:e_commerce_template/cubit/favorite_cubit.dart';
-import 'package:e_commerce_template/cubit/products_cubit.dart';
-import 'package:e_commerce_template/cubit/toggle_botnavbar_cubit.dart';
-import 'package:e_commerce_template/cubit/user_status_cubit.dart';
+import 'package:e_commerce_template/cubit/ads/ads_cubit.dart';
+import 'package:e_commerce_template/cubit/categories/categories_cubit.dart';
+import 'package:e_commerce_template/cubit/favorite/favorite_cubit.dart';
+import 'package:e_commerce_template/cubit/filter/filter_cubit.dart';
+import 'package:e_commerce_template/cubit/products/products_cubit.dart';
+import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
+import 'package:e_commerce_template/cubit/user_status/user_status_cubit.dart';
 import 'package:e_commerce_template/data/shop_repository.dart';
-import 'package:e_commerce_template/screens/enter_phone_screen.dart';
-import 'package:e_commerce_template/screens/fliter_screen.dart';
-import 'package:e_commerce_template/screens/get_started_screen.dart';
-import 'package:e_commerce_template/screens/subcatalogue_screen.dart';
+import 'package:e_commerce_template/model/filter.dart';
+import 'package:e_commerce_template/screens/sign_and_verify_screens/enter_phone_screen.dart';
+import 'package:e_commerce_template/screens/filter/fliter_screen.dart';
+import 'package:e_commerce_template/screens/sign_and_verify_screens/get_started_screen.dart';
+import 'package:e_commerce_template/screens/product/product_screen.dart';
+import 'package:e_commerce_template/screens/subcatalogue/subcatalogue_screen.dart';
 import 'package:e_commerce_template/screens/tabs_screen.dart';
-import 'package:e_commerce_template/screens/verification_screen.dart';
+import 'package:e_commerce_template/screens/sign_and_verify_screens/verification_screen.dart';
 import 'package:e_commerce_template/screens/verify_user_status_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,13 +35,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ProductsCubit(ShopRepository())),
+        BlocProvider(create: (context) => ProductsCubit(ShopRepository(), [])),
         BlocProvider(create: (context) => CategoriesCubit(ShopRepository())),
         BlocProvider(create: (context) => AdsCubit(ShopRepository())),
         BlocProvider(create: (context) => FavoriteCubit(ShopRepository())),
         BlocProvider(create: (context) => FavoriteCubit(ShopRepository())),
         BlocProvider(create: (context) => UserStatusCubit()),
         BlocProvider(create: (context) => ToggleBotNavBarCubit()),
+        BlocProvider(create: (context) => FilterCubit(Filter())),
       ],
       child: MaterialApp(
         title: 'My Shop',
@@ -55,6 +59,7 @@ class MyApp extends StatelessWidget {
           TabsScreen.routeName: (context) => TabsScreen(),
           SubCatalogueScreen.routeName: (context) => SubCatalogueScreen(),
           FilterScreen.routeName: (context) => FilterScreen(),
+          ProductScreen.routeName: (context) => ProductScreen(),
         },
       ),
     );

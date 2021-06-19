@@ -1,7 +1,10 @@
 import 'package:e_commerce_template/constants.dart';
-import 'package:e_commerce_template/cubit/toggle_botnavbar_cubit.dart';
+import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+
+import 'bottom_navbar_button.dart';
 
 class MyBottomNavBar extends StatefulWidget {
   @override
@@ -64,16 +67,16 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               topRight: Radius.circular(24.0),
             ),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 19.0, vertical: 10.0),
+              padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  BottomNavButton(
+                  BottomNavBarButton(
                     title: 'Home',
                     image:
                         context.read<ToggleBotNavBarCubit>().selectedIndex == 0
-                            ? 'assets/images/icons/home_icon_active.png'
-                            : 'assets/images/icons/home_icon.png',
+                            ? 'assets/images/icons/bottom_home_icon_active.svg'
+                            : 'assets/images/icons/bottom_home_icon.svg',
                     color:
                         context.read<ToggleBotNavBarCubit>().selectedIndex == 0
                             ? AllColors.activeTabTextColor
@@ -86,12 +89,12 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                       });
                     },
                   ),
-                  BottomNavButton(
+                  BottomNavBarButton(
                     title: 'Catalogue',
                     image:
                         context.read<ToggleBotNavBarCubit>().selectedIndex == 1
-                            ? 'assets/images/icons/cat_icon_active.png'
-                            : 'assets/images/icons/cat_icon.png',
+                            ? 'assets/images/icons/bottom_cat_icon_active.svg'
+                            : 'assets/images/icons/bottom_cat_icon.svg',
                     color:
                         context.read<ToggleBotNavBarCubit>().selectedIndex == 1
                             ? AllColors.activeTabTextColor
@@ -104,12 +107,12 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                       });
                     },
                   ),
-                  BottomNavButton(
+                  BottomNavBarButton(
                     title: 'Favorite',
                     image:
                         context.read<ToggleBotNavBarCubit>().selectedIndex == 2
-                            ? 'assets/images/icons/fav_icon_active.png'
-                            : 'assets/images/icons/fav_icon.png',
+                            ? 'assets/images/icons/bottom_fav_icon_active.svg'
+                            : 'assets/images/icons/bottom_fav_icon.svg',
                     color:
                         context.read<ToggleBotNavBarCubit>().selectedIndex == 2
                             ? AllColors.activeTabTextColor
@@ -122,12 +125,12 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                       });
                     },
                   ),
-                  BottomNavButton(
+                  BottomNavBarButton(
                     title: 'Profile',
-                    image:
-                        context.read<ToggleBotNavBarCubit>().selectedIndex == 3
-                            ? 'assets/images/icons/profile_icon_active.png'
-                            : 'assets/images/icons/profile_icon.png',
+                    image: context.read<ToggleBotNavBarCubit>().selectedIndex ==
+                            3
+                        ? 'assets/images/icons/bottom_profile_icon_active.svg'
+                        : 'assets/images/icons/bottom_profile_icon.svg',
                     color:
                         context.read<ToggleBotNavBarCubit>().selectedIndex == 3
                             ? AllColors.activeTabTextColor
@@ -166,16 +169,18 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                 children: [
                   InkWell(
                     onTap: slideCart,
+                    onDoubleTap: () {
+                      print('Navigate to the Cart!');
+                    },
                     child: Material(
                       color: Colors.transparent,
                       clipBehavior: Clip.antiAlias,
                       child: SizedBox(
                         child: Ink.image(
-                          image:
-                              AssetImage('assets/images/icons/cart_icon.png'),
+                          image: Svg('assets/images/icons/cart_icon.svg'),
                           fit: BoxFit.scaleDown,
-                          width: 36.0,
-                          height: 36.0,
+                          width: 28.0,
+                          height: 28.0,
                         ),
                       ),
                     ),
@@ -201,45 +206,6 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class BottomNavButton extends StatelessWidget {
-  final String title;
-  final String image;
-  final Color color;
-  final Function()? onPress;
-
-  BottomNavButton({
-    required this.title,
-    required this.image,
-    required this.onPress,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPress,
-      child: Material(
-        color: Colors.transparent,
-        clipBehavior: Clip.antiAlias,
-        child: Column(
-          children: [
-            Ink.image(
-              image: AssetImage(image),
-              fit: BoxFit.scaleDown,
-              width: 36.0,
-              height: 36.0,
-            ),
-            Text(
-              title,
-              style: AllStyles.bottomNavBarItemTextStyle.copyWith(color: color),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

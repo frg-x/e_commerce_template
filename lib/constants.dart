@@ -1,9 +1,11 @@
-import 'dart:ui';
-import 'package:e_commerce_template/screens/catalogue_screen.dart';
-import 'package:e_commerce_template/screens/home_screen.dart';
-import 'package:e_commerce_template/widgets/appbar/catalogue_appbar.dart';
-import 'package:e_commerce_template/widgets/appbar/home_appbar.dart';
+import 'package:e_commerce_template/screens/catalogue/catalogue_screen.dart';
+import 'package:e_commerce_template/screens/catalogue/catalogue_appbar.dart';
+import 'package:e_commerce_template/screens/home/home_appbar.dart';
+import 'package:e_commerce_template/screens/home/home_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/svg.dart';
 
 const int autoScrollDuration = 5;
 
@@ -11,10 +13,11 @@ class AllColors {
   static const getStartedContainerOverlay = Color(0xFF2A034B);
   static const phoneNumTextFieldBorder = Color(0xFFE1E1E1);
   static const mainYellow = Color(0xFFE7B944);
-  static const tabsScreenBgColor = Color(0xFFE5E5E5);
+  static const tabsScreenBgColor = Color(0xFFF4F3F4);
   static const lightGray = Color(0xFF9B9B9B);
   static const activeTabTextColor = Color(0xFF40304D);
   static const deepPurple = Color(0xFF34283E);
+  static const green = Color(0xFF46AB62);
 
   static const List<Color> purpleGradient = [
     AllColors.deepPurple,
@@ -34,6 +37,8 @@ class AllColors {
     Color(0xFFD23A3A),
     Color(0xFFF49763),
   ];
+
+  static const productPageGradientColor = Color(0xFF202020);
 
   static const ratingStarColor = Color(0xFFF2994A);
 }
@@ -60,9 +65,20 @@ class AllStyles {
   );
 
   static final getStartedMainButtonStyle = ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(
-      AllColors.mainYellow,
+    backgroundColor: MaterialStateProperty.all<Color>(AllColors.mainYellow),
+    overlayColor:
+        MaterialStateColor.resolveWith((states) => Colors.transparent),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
     ),
+  );
+
+  static final roundedButton8px48x48 = ButtonStyle(
+    backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+    overlayColor:
+        MaterialStateColor.resolveWith((states) => Colors.transparent),
     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
@@ -245,10 +261,21 @@ class AllStyles {
     fontWeight: FontWeight.w700,
   );
 
+  static const fontSize12w700green = TextStyle(
+    fontSize: 12.0,
+    color: AllColors.green,
+    fontWeight: FontWeight.w700,
+  );
+
   static const fontSize12w700deepPurple = TextStyle(
     fontSize: 12.0,
     color: AllColors.deepPurple,
     fontWeight: FontWeight.w700,
+  );
+  static const fontSize12w700lightPurpleGray = TextStyle(
+    fontSize: 12.0,
+    color: AllColors.deepPurple,
+    fontWeight: FontWeight.w400,
   );
 
   static const fontSize17w700deepPurple = TextStyle(
@@ -272,6 +299,13 @@ class AllStyles {
     letterSpacing: -0.49,
   );
 
+  static const fontSize19w400deepPurple = TextStyle(
+    fontSize: 19.0,
+    fontWeight: FontWeight.w400,
+    color: AllColors.deepPurple,
+    letterSpacing: -0.49,
+  );
+
   static const fontSize14w400lightPurpleGray = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
@@ -280,10 +314,12 @@ class AllStyles {
   );
 
   static final InputDecoration searchInputDecoration = InputDecoration(
-    prefixIcon: Image.asset(
-      'assets/images/icons/search_icon.png',
-      width: 18.0,
-      height: 18.0,
+    prefixIcon: Container(
+      padding: EdgeInsets.all(13.0),
+      child: SvgPicture.asset(
+        'assets/images/icons/search_icon.svg',
+        //fit: BoxFit.contain,
+      ),
     ),
     //isDense: true,
     filled: true,

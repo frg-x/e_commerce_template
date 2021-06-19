@@ -6,23 +6,11 @@ import 'package:e_commerce_template/model/category.dart';
 class ShopRepository {
   Future<List<Product>> fetchProducts() async {
     List<Product> productsList = [];
-
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection('product_items').get();
     querySnapshot.docs.forEach((item) {
       var productData = item.data() as Map<String, dynamic>;
-      Product product = Product(
-        id: productData['id'],
-        title: productData['title'],
-        description: productData['description'],
-        image: productData['image'],
-        price: productData['price'].toDouble(),
-        discount: productData['discount'].toDouble(),
-        rating: productData['rating'],
-        inCategories: productData['in_categories'],
-        sizes: productData['sizes'],
-        colors: productData['colors'],
-      );
+      Product product = Product.fromJson(productData);
       productsList.add(product);
     });
     return productsList;
@@ -30,16 +18,11 @@ class ShopRepository {
 
   Future<List<Category>> fetchCategories() async {
     List<Category> categoryList = [];
-
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection('category_items').get();
     querySnapshot.docs.forEach((cat) {
       var categoryData = cat.data() as Map<String, dynamic>;
-      Category category = Category(
-          id: categoryData['id'],
-          title: categoryData['title'],
-          image: categoryData['image'],
-          subCategories: categoryData['sub_categories']);
+      Category category = Category.fromJson(categoryData);
       categoryList.add(category);
     });
     return categoryList;
@@ -51,11 +34,7 @@ class ShopRepository {
         await FirebaseFirestore.instance.collection('adv_items').get();
     querySnapshot.docs.forEach((adv) {
       var adData = adv.data() as Map<String, dynamic>;
-      Advertisement advertisement = Advertisement(
-        id: adData['id'],
-        title: adData['title'],
-        image: adData['image'],
-      );
+      Advertisement advertisement = Advertisement.fromJson((adData));
       advList.add(advertisement);
     });
     return advList;
@@ -68,13 +47,12 @@ class ShopRepository {
     var favProducts = (userData!['favProducts'] as List)
         .map((item) => item as String)
         .toList();
-
     return favProducts;
   }
 
   List<String> favProducts = [];
 
-  Future<void> toggleFavoriteProduct(
+  void toggleFavoriteProduct(
       {required String uid, required String productId}) async {
     DocumentSnapshot<Map<String, dynamic>> querySnapshot =
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
@@ -116,6 +94,7 @@ class ShopRepository {
         inCategories: productData['in_categories'],
         sizes: productData['sizes'],
         colors: productData['colors'],
+        bigPhotos: productData['big_photos'],
       );
       productsList.add(product);
     });

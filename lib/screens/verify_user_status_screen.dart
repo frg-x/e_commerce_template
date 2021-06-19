@@ -1,9 +1,9 @@
-import 'package:e_commerce_template/cubit/ads_cubit.dart';
-import 'package:e_commerce_template/cubit/categories_cubit.dart';
-import 'package:e_commerce_template/cubit/products_cubit.dart';
-import 'package:e_commerce_template/cubit/toggle_botnavbar_cubit.dart';
-import 'package:e_commerce_template/cubit/user_status_cubit.dart';
-import 'package:e_commerce_template/screens/get_started_screen.dart';
+import 'package:e_commerce_template/cubit/ads/ads_cubit.dart';
+import 'package:e_commerce_template/cubit/categories/categories_cubit.dart';
+import 'package:e_commerce_template/cubit/products/products_cubit.dart';
+import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
+import 'package:e_commerce_template/cubit/user_status/user_status_cubit.dart';
+import 'package:e_commerce_template/screens/sign_and_verify_screens/get_started_screen.dart';
 import 'package:e_commerce_template/screens/tabs_screen.dart';
 import 'package:e_commerce_template/widgets/loading_indicator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,11 +22,11 @@ class _VerifyUserStatusScreenState extends State<VerifyUserStatusScreen> {
 
   @override
   void initState() {
-    context.read<UserStatusCubit>().checkUserStatus();
-    context.read<ProductsCubit>().getProducts();
-    context.read<CategoriesCubit>().getCategories();
-    context.read<AdsCubit>().getAds();
-    context.read<ToggleBotNavBarCubit>().toggleBottomNavBarMenu(0);
+    context.read<UserStatusCubit>();
+    context.read<ProductsCubit>();
+    context.read<CategoriesCubit>();
+    context.read<AdsCubit>();
+    context.read<ToggleBotNavBarCubit>();
     super.initState();
   }
 
@@ -34,7 +34,7 @@ class _VerifyUserStatusScreenState extends State<VerifyUserStatusScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<UserStatusCubit, IsLoggedState>(
       builder: (context, state) {
-        print(state);
+        //print(state);
         if (state is LoggedInState) {
           return TabsScreen();
         } else if (state is NotLoggedInState) {

@@ -1,7 +1,7 @@
 import 'package:e_commerce_template/constants.dart';
-import 'package:e_commerce_template/cubit/favorite_cubit.dart';
-import 'package:e_commerce_template/cubit/toggle_botnavbar_cubit.dart';
-import 'package:e_commerce_template/cubit/user_status_cubit.dart';
+import 'package:e_commerce_template/cubit/favorite/favorite_cubit.dart';
+import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
+import 'package:e_commerce_template/cubit/user_status/user_status_cubit.dart';
 import 'package:e_commerce_template/widgets/my_bottom_nav_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
