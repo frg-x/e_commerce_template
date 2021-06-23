@@ -1,5 +1,7 @@
 import 'package:e_commerce_template/constants.dart';
+import 'package:e_commerce_template/cubit/cart/cart_cubit.dart';
 import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
+import 'package:e_commerce_template/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -20,7 +22,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
     if (isCartOpened) {
       setState(() {
         cartOffset = 0;
-        bottomIconsOffset = 85;
+        bottomIconsOffset = 75;
         isCartOpened = !isCartOpened;
       });
     } else {
@@ -163,16 +165,16 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
             height: 56.0,
             width: 116.0,
             decoration: AllStyles.bottomNavBarDecoration,
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: slideCart,
-                    onDoubleTap: () {
-                      print('Navigate to the Cart!');
-                    },
-                    child: Material(
+            child: InkWell(
+              onDoubleTap: () {
+                Navigator.pushNamed(context, CartScreen.routeName);
+              },
+              onTap: slideCart,
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Material(
                       color: Colors.transparent,
                       clipBehavior: Clip.antiAlias,
                       child: SizedBox(
@@ -184,23 +186,30 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(width: 6),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '\$239.98',
-                        style: AllStyles.cartTotalSumTextStyle,
-                      ),
-                      Text(
-                        '2 items',
-                        style: AllStyles.cartTotalItemsTextStyle,
-                      ),
-                    ],
-                  ),
-                ],
+                    SizedBox(width: 10.0),
+                    BlocBuilder<CartCubit, CartState>(
+                      builder: (context, state) {
+                        int cartItemsCount =
+                            (state as CartInitial).cartItemCount;
+                        double cartTotalSum = state.cartSum;
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '\$${cartTotalSum.toStringAsFixed(2)}',
+                              style: AllStyles.cartTotalSumTextStyle,
+                            ),
+                            Text(
+                              '$cartItemsCount items',
+                              style: AllStyles.cartTotalItemsTextStyle,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -300,6 +300,12 @@ class _FilterBodyState extends State<FilterBody> {
                             height: 47,
                             child: Container(
                               decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: sizes[index]['isActive']
+                                      ? AllColors.mainYellow
+                                      : AllColors.phoneNumTextFieldBorder,
+                                  width: 1.0,
+                                ),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(8.0)),
                                 color: sizes[index]['isActive']

@@ -1,10 +1,10 @@
 import 'package:e_commerce_template/constants.dart';
-import 'package:e_commerce_template/cubit/filter/filter_cubit.dart';
-import 'package:flutter/material.dart';
+import 'package:e_commerce_template/cubit/cart/cart_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class FilterAppBar extends StatelessWidget with PreferredSizeWidget {
+class CartAppBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize = Size.fromHeight(88.0);
 
   @override
@@ -37,6 +37,7 @@ class FilterAppBar extends StatelessWidget with PreferredSizeWidget {
                     alignment: Alignment.centerRight,
                   ),
                   onPressed: () {
+                    //context.read<CartItemCubit>().emit(CartInitial());
                     Navigator.pop(context);
                   },
                   child: SvgPicture.asset(
@@ -45,15 +46,15 @@ class FilterAppBar extends StatelessWidget with PreferredSizeWidget {
                 ),
               ),
               Text(
-                'Filter',
+                'Cart',
                 style: AllStyles.fontSize19w700white,
               ),
               GestureDetector(
                   onTap: () {
-                    context.read<FilterCubit>().clearFilter();
+                    context.read<CartCubit>().clearCart();
                   },
                   child: Text(
-                    'Clear',
+                    'Delete',
                     style: AllStyles.fontSize14w600,
                   )),
             ],

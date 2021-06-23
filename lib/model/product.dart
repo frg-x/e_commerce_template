@@ -21,6 +21,7 @@ class Product {
     required this.sizes,
     required this.colors,
     required this.bigPhotos,
+    required this.reviews,
   });
 
   String id;
@@ -34,6 +35,7 @@ class Product {
   List<dynamic> sizes;
   List<dynamic> colors;
   List<dynamic> bigPhotos;
+  String reviews;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],
@@ -47,6 +49,7 @@ class Product {
         sizes: List<dynamic>.from(json["sizes"].map((x) => x)),
         colors: List<dynamic>.from(json["colors"].map((x) => x)),
         bigPhotos: List<dynamic>.from(json["big_photos"].map((x) => x)),
+        reviews: json["reviews"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -61,5 +64,6 @@ class Product {
         "sizes": List<dynamic>.from(sizes.map((x) => x)),
         "colors": List<dynamic>.from(colors.map((x) => x)),
         "bigPhotos": List<dynamic>.from(bigPhotos.map((x) => x)),
+        "reviews": reviews,
       };
 }

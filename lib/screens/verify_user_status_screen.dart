@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerifyUserStatusScreen extends StatefulWidget {
+  static const routeName = '/verify_user_status';
+
   @override
   _VerifyUserStatusScreenState createState() => _VerifyUserStatusScreenState();
 }
@@ -53,6 +55,7 @@ class _VerifyUserStatusScreenState extends State<VerifyUserStatusScreen> {
                 ],
               ),
             ),
+            backgroundColor: Colors.red,
           );
         }
       },

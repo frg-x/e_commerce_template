@@ -83,19 +83,7 @@ class ShopRepository {
         await FirebaseFirestore.instance.collection('product_items').get();
     querySnapshot.docs.forEach((item) {
       var productData = item.data() as Map<String, dynamic>;
-      Product product = Product(
-        id: productData['id'],
-        title: productData['title'],
-        description: productData['description'],
-        image: productData['image'],
-        price: productData['price'].toDouble(),
-        discount: productData['discount'].toDouble(),
-        rating: productData['rating'],
-        inCategories: productData['in_categories'],
-        sizes: productData['sizes'],
-        colors: productData['colors'],
-        bigPhotos: productData['big_photos'],
-      );
+      Product product = Product.fromJson(productData);
       productsList.add(product);
     });
     return productsList;

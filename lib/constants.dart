@@ -1,5 +1,7 @@
 import 'package:e_commerce_template/screens/catalogue/catalogue_screen.dart';
 import 'package:e_commerce_template/screens/catalogue/catalogue_appbar.dart';
+import 'package:e_commerce_template/screens/favorite/favorite_appbar.dart';
+import 'package:e_commerce_template/screens/favorite/favorite_screen.dart';
 import 'package:e_commerce_template/screens/home/home_appbar.dart';
 import 'package:e_commerce_template/screens/home/home_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,10 +19,11 @@ class AllColors {
   static const lightGray = Color(0xFF9B9B9B);
   static const activeTabTextColor = Color(0xFF40304D);
   static const deepPurple = Color(0xFF34283E);
+  static const dividerBetweenCartItems = Color(0xFFE5E5E5);
   static const green = Color(0xFF46AB62);
 
   static const List<Color> purpleGradient = [
-    AllColors.deepPurple,
+    Color(0xFF34283E),
     Color(0xFF845FA1),
   ];
 
@@ -102,6 +105,12 @@ class AllStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static const fontSize14w400deepPurple = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+    color: AllColors.deepPurple,
+  );
+
   static const fontSize14w400white = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
@@ -113,6 +122,13 @@ class AllStyles {
     fontWeight: FontWeight.w600,
     letterSpacing: -0.15,
     color: Colors.white,
+  );
+
+  static const fontSize14w600deepPurple = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w600,
+    letterSpacing: -0.15,
+    color: AllColors.deepPurple,
   );
 
   static const fontSize13w500 = TextStyle(
@@ -132,6 +148,14 @@ class AllStyles {
     fontWeight: FontWeight.w700,
     color: Colors.white,
   );
+  static const SFProDisplay25w700deepPurple = TextStyle(
+    fontFamily: 'SF-Pro-Display',
+    fontSize: 25.0,
+    fontWeight: FontWeight.w700,
+    color: AllColors.deepPurple,
+    letterSpacing: 0.35,
+  );
+
   static const SFProText12w700mainYellow = TextStyle(
     fontFamily: 'SF-Pro-Text',
     fontSize: 12.0,
@@ -255,10 +279,27 @@ class AllStyles {
     fontWeight: FontWeight.w700,
   );
 
+  static const fontSize11w400white = TextStyle(
+    fontSize: 11.0,
+    color: AllColors.lightGray,
+    fontWeight: FontWeight.w400,
+  );
+
   static const fontSize12w700lightGray = TextStyle(
     fontSize: 12.0,
     color: AllColors.lightGray,
     fontWeight: FontWeight.w700,
+  );
+
+  static const fontSize12w700 = TextStyle(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const fontSize12w700white = TextStyle(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
   );
 
   static const fontSize12w700green = TextStyle(
@@ -272,6 +313,20 @@ class AllStyles {
     color: AllColors.deepPurple,
     fontWeight: FontWeight.w700,
   );
+
+  static const fontSize12w400lightPurpleGray = TextStyle(
+    fontSize: 12.0,
+    color: AllColors.lightPurpleGray,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const fontSize12w400lightGray = TextStyle(
+    fontSize: 12.0,
+    color: AllColors.lightGray,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.15,
+  );
+
   static const fontSize12w700lightPurpleGray = TextStyle(
     fontSize: 12.0,
     color: AllColors.deepPurple,
@@ -289,6 +344,12 @@ class AllStyles {
     fontSize: 19.0,
     fontWeight: FontWeight.w700,
     color: AllColors.deepPurple,
+    letterSpacing: -0.49,
+  );
+
+  static const fontSize19w700 = TextStyle(
+    fontSize: 19.0,
+    fontWeight: FontWeight.w700,
     letterSpacing: -0.49,
   );
 
@@ -310,6 +371,13 @@ class AllStyles {
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
     color: AllColors.lightPurpleGray,
+    letterSpacing: -0.15,
+  );
+
+  static const fontSize14w600lightGray = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w600,
+    color: AllColors.lightGray,
     letterSpacing: -0.15,
   );
 
@@ -353,12 +421,8 @@ final List<Map<String, dynamic>> tabPages = [
     'appBar': CatalogueAppBar(),
   },
   {
-    'body': Container(
-      child: Center(child: Text('Favorite')),
-    ),
-    'appBar': AppBar(
-      title: Text('Favorite'),
-    )
+    'body': FavoriteScreen(),
+    'appBar': FavoriteAppBar(),
   },
   {
     'body': Container(

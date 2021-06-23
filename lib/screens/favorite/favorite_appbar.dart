@@ -1,10 +1,9 @@
 import 'package:e_commerce_template/constants.dart';
-import 'package:e_commerce_template/cubit/filter/filter_cubit.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class FilterAppBar extends StatelessWidget with PreferredSizeWidget {
+class FavoriteAppBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize = Size.fromHeight(88.0);
 
   @override
@@ -45,17 +44,13 @@ class FilterAppBar extends StatelessWidget with PreferredSizeWidget {
                 ),
               ),
               Text(
-                'Filter',
+                'Favorite',
                 style: AllStyles.fontSize19w700white,
               ),
-              GestureDetector(
-                  onTap: () {
-                    context.read<FilterCubit>().clearFilter();
-                  },
-                  child: Text(
-                    'Clear',
-                    style: AllStyles.fontSize14w600,
-                  )),
+              SizedBox(
+                width: 24,
+                height: 24,
+              ),
             ],
           ),
         ),
