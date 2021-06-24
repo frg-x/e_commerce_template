@@ -84,11 +84,9 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                             ? AllColors.activeTabTextColor
                             : AllColors.lightGray,
                     onPress: () {
-                      setState(() {
-                        context
-                            .read<ToggleBotNavBarCubit>()
-                            .toggleBottomNavBarMenu(0);
-                      });
+                      context
+                          .read<ToggleBotNavBarCubit>()
+                          .toggleBottomNavBarMenu(0);
                     },
                   ),
                   BottomNavBarButton(
@@ -102,11 +100,9 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                             ? AllColors.activeTabTextColor
                             : AllColors.lightGray,
                     onPress: () {
-                      setState(() {
-                        context
-                            .read<ToggleBotNavBarCubit>()
-                            .toggleBottomNavBarMenu(1);
-                      });
+                      context
+                          .read<ToggleBotNavBarCubit>()
+                          .toggleBottomNavBarMenu(1);
                     },
                   ),
                   BottomNavBarButton(
@@ -120,11 +116,9 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                             ? AllColors.activeTabTextColor
                             : AllColors.lightGray,
                     onPress: () {
-                      setState(() {
-                        context
-                            .read<ToggleBotNavBarCubit>()
-                            .toggleBottomNavBarMenu(2);
-                      });
+                      context
+                          .read<ToggleBotNavBarCubit>()
+                          .toggleBottomNavBarMenu(2);
                     },
                   ),
                   BottomNavBarButton(
@@ -138,11 +132,9 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                             ? AllColors.activeTabTextColor
                             : AllColors.lightGray,
                     onPress: () {
-                      setState(() {
-                        context
-                            .read<ToggleBotNavBarCubit>()
-                            .toggleBottomNavBarMenu(3);
-                      });
+                      context
+                          .read<ToggleBotNavBarCubit>()
+                          .toggleBottomNavBarMenu(3);
                     },
                   ),
                   AnimatedContainer(

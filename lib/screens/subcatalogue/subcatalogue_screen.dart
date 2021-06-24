@@ -220,8 +220,7 @@ class _SubCatBodyState extends State<SubCatBody> {
                                                                 .id)
                                                         ? true
                                                         : false,
-                                                productId:
-                                                    productItemList[index].id,
+                                                product: productItemList[index],
                                               );
                                             } else
                                               return Icon(Icons.error_outline,

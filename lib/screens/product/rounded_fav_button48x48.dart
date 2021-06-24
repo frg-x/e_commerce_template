@@ -1,16 +1,17 @@
 import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/cubit/favorite/favorite_cubit.dart';
+import 'package:e_commerce_template/model/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 class RoundedFavoriteButton48x48 extends StatelessWidget {
   final bool favoriteStatus;
-  final String productId;
+  final Product product;
 
   RoundedFavoriteButton48x48({
     required this.favoriteStatus,
-    required this.productId,
+    required this.product,
   });
 
   @override
@@ -40,7 +41,7 @@ class RoundedFavoriteButton48x48 extends StatelessWidget {
                 ),
               ),
         onPressed: () {
-          context.read<FavoriteCubit>().toggleFavorite(productId);
+          context.read<FavoriteCubit>().toggleFavorite(product);
         },
         style: AllStyles.roundedButton8px48x48,
       ),

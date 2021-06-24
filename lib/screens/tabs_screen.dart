@@ -23,7 +23,7 @@ class _TabsScreenState extends State<TabsScreen> {
       context.read<FavoriteCubit>().setUserId(user.uid);
       context.read<FavoriteCubit>().getFavorite();
     } else {
-      context.read<FavoriteCubit>().favProducts = [];
+      context.read<FavoriteCubit>().favProductsIds = [];
     }
   }
 

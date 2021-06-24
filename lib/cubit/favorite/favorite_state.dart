@@ -18,30 +18,7 @@ class GetFavoriteError extends GetFavoriteState {
 }
 
 class GetFavoriteLoaded extends GetFavoriteState {
-  final List<String> favoriteList;
-  const GetFavoriteLoaded(this.favoriteList);
-
-  @override
-  bool operator ==(Object other) {
-    // TODO: implement ==
-    return super == other;
-  }
-
-  @override
-  // TODO: implement hashCode
-  int get hashCode => super.hashCode;
-}
-
-class ToggleFavorite extends GetFavoriteState {
-  const ToggleFavorite();
-
-  @override
-  bool operator ==(Object other) {
-    // TODO: implement ==
-    return super == other;
-  }
-
-  @override
-  // TODO: implement hashCode
-  int get hashCode => super.hashCode;
+  final List<String> favoriteProductsIds;
+  final List<Product> favoriteProducts;
+  const GetFavoriteLoaded(this.favoriteProductsIds, this.favoriteProducts);
 }

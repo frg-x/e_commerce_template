@@ -1,6 +1,7 @@
 import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/cubit/cart/cart_cubit.dart';
 import 'package:e_commerce_template/cubit/delivery/delivery_cubit.dart';
+import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
 import 'package:e_commerce_template/screens/tabs_screen.dart';
 import 'package:e_commerce_template/screens/verify_user_status_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -89,6 +90,9 @@ class _CheckoutBottomNavBarState extends State<CheckoutBottomNavBar> {
                           width: 239.0,
                           child: TextButton(
                             onPressed: () {
+                              context
+                                  .read<ToggleBotNavBarCubit>()
+                                  .toggleBottomNavBarMenu(0);
                               Navigator.pushReplacementNamed(
                                   context, TabsScreen.routeName);
                               Future.delayed(Duration(seconds: 1)).then((_) {

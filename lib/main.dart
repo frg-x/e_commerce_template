@@ -72,7 +72,6 @@ class MyApp extends StatelessWidget {
           ProductScreen.routeName: (context) => ProductScreen(),
           CartScreen.routeName: (context) => CartScreen(),
           CheckoutScreen.routeName: (context) => CheckoutScreen(),
-          FavoriteScreen.routeName: (context) => FavoriteScreen(),
           VerifyUserStatusScreen.routeName: (context) =>
               VerifyUserStatusScreen(),
         },

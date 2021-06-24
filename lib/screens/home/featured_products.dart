@@ -22,15 +22,12 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
     //print(context.read<FavoriteCubit>().isLogged);
     return BlocBuilder<ProductsCubit, GetProductsState>(
         builder: (context, state) {
-      //print(state);
       if (state is GetProductsInitial) {
         return Container();
       } else if (state is GetProductsLoading) {
         return LoadingIndicator(height: 165.0);
       } else if (state is GetProductsLoaded) {
         List<Product> productItemList = state.products;
-        //List<String> favProducts = context.read<FavoriteCubit>().favProducts;
-        //print(productItemList);
         return GridView.builder(
             padding: EdgeInsets.only(top: 0.0),
             shrinkWrap: true,
@@ -66,41 +63,21 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                           height: 36,
                           width: 36,
                           child: context.read<FavoriteCubit>().isLogged
-                              // ? BlocBuilder<FavoriteCubit, GetFavoriteState>(
-                              //     builder: (context, state) {
-                              //       if (state is GetFavoriteLoaded) {
-                              //         return FavoriteButton(
-                              //           favoriteStatus: state.favoriteList
-                              //               .contains(
-                              //                   productItemList[index].id),
-                              //           productId: productItemList[index].id,
-                              //         );
-                              //       } else {
-                              //         return CircularProgressIndicator();
-                              //       }
-                              //     },
-                              //   )
-                              ? StreamBuilder<dynamic>(
-                                  stream: FirebaseFirestore.instance
-                                      .collection('users')
-                                      .doc(context.read<FavoriteCubit>().userId)
-                                      .snapshots(),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData) {
-                                      var favProducts =
-                                          snapshot.data['favProducts'];
+                              ? BlocBuilder<FavoriteCubit, GetFavoriteState>(
+                                  builder: (context, state) {
+                                    if (state is GetFavoriteLoaded) {
+                                      var favProductsIds =
+                                          state.favoriteProductsIds;
                                       return FavoriteButton(
-                                        favoriteStatus: favProducts.contains(
+                                        product: productItemList[index],
+                                        favoriteStatus: favProductsIds.contains(
                                                 productItemList[index].id)
                                             ? true
                                             : false,
-                                        productId: productItemList[index].id,
                                       );
-                                    } else
-                                      return FavoriteButton(
-                                        favoriteStatus: false,
-                                        productId: productItemList[index].id,
-                                      );
+                                    } else {
+                                      return Container();
+                                    }
                                   },
                                 )
                               : Container(),

@@ -1,4 +1,5 @@
 import 'package:e_commerce_template/constants.dart';
+import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -36,7 +37,9 @@ class FavoriteAppBar extends StatelessWidget with PreferredSizeWidget {
                     alignment: Alignment.centerRight,
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    context
+                        .read<ToggleBotNavBarCubit>()
+                        .toggleBottomNavBarMenu(0);
                   },
                   child: SvgPicture.asset(
                     'assets/images/icons/arrow_left_white.svg',

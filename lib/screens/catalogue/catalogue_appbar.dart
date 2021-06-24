@@ -37,12 +37,9 @@ class CatalogueAppBar extends StatelessWidget with PreferredSizeWidget {
                         alignment: Alignment.centerRight,
                       ),
                       onPressed: () {
-                        int lastState = context
-                            .read<ToggleBotNavBarCubit>()
-                            .lastSelectedIndex;
                         context
                             .read<ToggleBotNavBarCubit>()
-                            .toggleBottomNavBarMenu(lastState);
+                            .toggleBottomNavBarMenu(0);
                       },
                       child: SvgPicture.asset(
                         'assets/images/icons/arrow_left_white.svg',

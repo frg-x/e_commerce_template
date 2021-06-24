@@ -591,16 +591,14 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                                                                       .id)
                                                               ? true
                                                               : false,
-                                                      productId:
-                                                          relatedProducts[index]
-                                                              .id,
+                                                      product: relatedProducts[
+                                                          index],
                                                     );
                                                   } else
                                                     return FavoriteButton(
                                                       favoriteStatus: false,
-                                                      productId:
-                                                          relatedProducts[index]
-                                                              .id,
+                                                      product: relatedProducts[
+                                                          index],
                                                     );
                                                 },
                                               )

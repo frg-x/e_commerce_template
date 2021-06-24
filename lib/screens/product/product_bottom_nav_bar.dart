@@ -115,7 +115,7 @@ class ProductBottomNavBar extends StatelessWidget {
                           return RoundedFavoriteButton48x48(
                             favoriteStatus:
                                 favProducts.contains(product.id) ? true : false,
-                            productId: product.id,
+                            product: product,
                           );
                         } else
                           return Icon(Icons.error_outline,
