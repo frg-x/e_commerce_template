@@ -24,7 +24,7 @@ class _VerifyUserStatusScreenState extends State<VerifyUserStatusScreen> {
 
   @override
   void initState() {
-    context.read<UserStatusCubit>();
+    context.read<UserStatusCubit>().checkUserStatus();
     context.read<ProductsCubit>();
     context.read<CategoriesCubit>();
     context.read<AdsCubit>();
@@ -36,7 +36,7 @@ class _VerifyUserStatusScreenState extends State<VerifyUserStatusScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<UserStatusCubit, IsLoggedState>(
       builder: (context, state) {
-        //print(state);
+        print(state);
         if (state is LoggedInState) {
           return TabsScreen();
         } else if (state is NotLoggedInState) {
@@ -55,7 +55,6 @@ class _VerifyUserStatusScreenState extends State<VerifyUserStatusScreen> {
                 ],
               ),
             ),
-            backgroundColor: Colors.red,
           );
         }
       },

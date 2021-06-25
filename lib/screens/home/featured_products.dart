@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/cubit/favorite/favorite_cubit.dart';
 import 'package:e_commerce_template/cubit/products/products_cubit.dart';
+import 'package:e_commerce_template/cubit/user_status/user_status_cubit.dart';
 import 'package:e_commerce_template/model/product.dart';
 import 'package:e_commerce_template/widgets/favorite_button.dart';
 import 'package:e_commerce_template/screens/product/product_screen.dart';
@@ -62,7 +63,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                         Positioned(
                           height: 36,
                           width: 36,
-                          child: context.read<FavoriteCubit>().isLogged
+                          child: context.read<UserStatusCubit>().isLogged
                               ? BlocBuilder<FavoriteCubit, GetFavoriteState>(
                                   builder: (context, state) {
                                     if (state is GetFavoriteLoaded) {

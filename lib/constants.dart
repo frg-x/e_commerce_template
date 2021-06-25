@@ -4,6 +4,8 @@ import 'package:e_commerce_template/screens/favorite/favorite_appbar.dart';
 import 'package:e_commerce_template/screens/favorite/favorite_screen.dart';
 import 'package:e_commerce_template/screens/home/home_appbar.dart';
 import 'package:e_commerce_template/screens/home/home_screen.dart';
+import 'package:e_commerce_template/screens/profile/profile_appbar.dart';
+import 'package:e_commerce_template/screens/profile/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -340,6 +342,13 @@ class AllStyles {
     letterSpacing: -0.41,
   );
 
+  static const fontSize17w600deepPurple = TextStyle(
+    fontSize: 17.0,
+    fontWeight: FontWeight.w600,
+    color: AllColors.deepPurple,
+    letterSpacing: -0.41,
+  );
+
   static const fontSize19w700deepPurple = TextStyle(
     fontSize: 19.0,
     fontWeight: FontWeight.w700,
@@ -425,11 +434,7 @@ final List<Map<String, dynamic>> tabPages = [
     'appBar': FavoriteAppBar(),
   },
   {
-    'body': Container(
-      child: Center(child: Text('Profile')),
-    ),
-    'appBar': AppBar(
-      title: Text('Profile'),
-    ),
+    'body': ProfileScreen(),
+    'appBar': ProfileAppBar(),
   }
 ];

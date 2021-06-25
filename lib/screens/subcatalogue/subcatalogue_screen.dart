@@ -3,6 +3,7 @@ import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/cubit/favorite/favorite_cubit.dart';
 import 'package:e_commerce_template/cubit/products/products_cubit.dart';
 import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
+import 'package:e_commerce_template/cubit/user_status/user_status_cubit.dart';
 import 'package:e_commerce_template/model/product.dart';
 import 'package:e_commerce_template/widgets/favorite_button.dart';
 import 'package:e_commerce_template/screens/product/product_screen.dart';
@@ -200,7 +201,9 @@ class _SubCatBodyState extends State<SubCatBody> {
                                 Positioned(
                                   height: 36,
                                   width: 36,
-                                  child: context.read<FavoriteCubit>().isLogged
+                                  child: context
+                                          .read<UserStatusCubit>()
+                                          .isLogged
                                       ? StreamBuilder<dynamic>(
                                           stream: FirebaseFirestore.instance
                                               .collection('users')

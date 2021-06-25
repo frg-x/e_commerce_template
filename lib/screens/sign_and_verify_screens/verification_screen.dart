@@ -1,5 +1,6 @@
 import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/screens/tabs_screen.dart';
+import 'package:e_commerce_template/screens/verify_user_status_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   String otp = '';
   String verificationId = '';
   String phoneNumber = '';
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  //final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   final TextEditingController pinCodeController = TextEditingController();
 
   void _validatePin(String pin) {
@@ -87,7 +88,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      //key: _scaffoldKey,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -180,8 +181,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                             smsCode: otp))
                                     .then((value) {
                                   if (value.user != null) {
-                                    Navigator.pushNamed(
-                                        context, TabsScreen.routeName);
+                                    Navigator.pushNamed(context,
+                                        VerifyUserStatusScreen.routeName);
                                   }
                                 });
                               } catch (e) {

@@ -3,6 +3,7 @@ import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/cubit/cart/cart_cubit.dart';
 import 'package:e_commerce_template/cubit/favorite/favorite_cubit.dart';
 import 'package:e_commerce_template/cubit/product_page_options/product_page_options_cubit.dart';
+import 'package:e_commerce_template/cubit/user_status/user_status_cubit.dart';
 import 'package:e_commerce_template/model/cart_item.dart';
 import 'package:e_commerce_template/model/product.dart';
 import 'package:e_commerce_template/screens/cart/cart_screen.dart';
@@ -93,17 +94,30 @@ class ProductBottomNavBar extends StatelessWidget {
                 height: 48.0,
                 width: 239.0,
                 child: TextButton(
-                  onPressed: () {
-                    checkProductOptions(context);
-                  },
-                  style: AllStyles.getStartedMainButtonStyle,
+                  onPressed: context.read<UserStatusCubit>().isLogged
+                      ? () {
+                          checkProductOptions(context);
+                        }
+                      : null,
+                  style: ButtonStyle(
+                    backgroundColor: context.read<UserStatusCubit>().isLogged
+                        ? MaterialStateProperty.all<Color>(
+                            AllColors.mainYellow,
+                          )
+                        : MaterialStateProperty.all<Color>(AllColors.lightGray),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
                   child: Text(
                     'Add to Cart',
                     style: AllStyles.fontSize17w700white,
                   ),
                 ),
               ),
-              context.read<FavoriteCubit>().isLogged
+              context.read<UserStatusCubit>().isLogged
                   ? StreamBuilder<dynamic>(
                       stream: FirebaseFirestore.instance
                           .collection('users')

@@ -1,5 +1,6 @@
 import 'package:e_commerce_template/constants.dart';
 import 'package:e_commerce_template/cubit/cart/cart_cubit.dart';
+import 'package:e_commerce_template/cubit/favorite/favorite_cubit.dart';
 import 'package:e_commerce_template/cubit/toggle_botnavbar/toggle_botnavbar_cubit.dart';
 import 'package:e_commerce_template/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';

@@ -55,7 +55,7 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
                         alignment: Alignment.centerRight,
                       ),
                       onPressed: () {
-                        showAlertDialog(context);
+                        print('Show notifications!');
                       },
                       child: SvgPicture.asset(
                         'assets/images/icons/bell_icon.svg',
@@ -95,39 +95,4 @@ class HomeAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
     );
   }
-}
-
-showAlertDialog(BuildContext context) {
-  // set up the buttons
-  Widget cancelButton = TextButton(
-    child: Text("Cancel"),
-    onPressed: () {
-      Navigator.pop(context);
-    },
-  );
-  Widget yesButton = TextButton(
-    child: Text("Yes"),
-    onPressed: () {
-      FirebaseAuth.instance.signOut();
-      Navigator.pushReplacementNamed(context, GetStarted.routeName);
-    },
-  );
-
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Warning"),
-    content: Text("Would you like to Sign out?"),
-    actions: [
-      yesButton,
-      cancelButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
 }

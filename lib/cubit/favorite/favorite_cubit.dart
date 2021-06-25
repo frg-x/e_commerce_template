@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce_template/cubit/products/products_cubit.dart';
 import 'package:e_commerce_template/data/shop_repository.dart';
 import 'package:e_commerce_template/model/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +11,6 @@ class FavoriteCubit extends Cubit<GetFavoriteState> {
   List<Product> favoriteProducts = [];
   List<Product> allProducts = [];
   bool isLogged = false;
-
   FavoriteCubit(this._shopRepository) : super(GetFavoriteInitial());
 
   Future<void> setUserId(String uid) async {
@@ -22,7 +20,8 @@ class FavoriteCubit extends Cubit<GetFavoriteState> {
 
   Future<void> getFavorite() async {
     try {
-      favoriteProducts = [];
+      // favProductsIds = [];
+      // favoriteProducts = [];
       allProducts = await _shopRepository.fetchProducts();
       favProductsIds = await _shopRepository.getUserFavoriteProducts(
           uid: userId) as List<String>;
@@ -31,12 +30,37 @@ class FavoriteCubit extends Cubit<GetFavoriteState> {
           favoriteProducts.add(element);
         }
       });
+
       emit(GetFavoriteLoaded(favProductsIds, favoriteProducts));
     } on NetworkException {
       emit(GetFavoriteError(
           "Couldn't fetch advertisements. Is the device online?"));
     }
   }
+
+  // Future<void> getFavorite() async {
+  //   print('Called getFavorite!');
+  //   try {
+  //     favProductsIds = [];
+  //     favoriteProducts = [];
+  //     await _shopRepository
+  //         .fetchProducts()
+  //         .then((value) => allProducts = value)
+  //         .then((_) async {
+  //       favProductsIds = await _shopRepository.getUserFavoriteProducts(
+  //           uid: userId) as List<String>;
+  //       allProducts.forEach((element) {
+  //         if (favProductsIds.contains(element.id)) {
+  //           favoriteProducts.add(element);
+  //         }
+  //       });
+  //       emit(GetFavoriteLoaded(favProductsIds, favoriteProducts));
+  //     });
+  //   } on NetworkException {
+  //     emit(GetFavoriteError(
+  //         "Couldn't fetch favorite/products data. Is the device online?"));
+  //   }
+  // }
 
   Future<void> toggleFavorite(Product product) async {
     try {
@@ -53,13 +77,18 @@ class FavoriteCubit extends Cubit<GetFavoriteState> {
       }
 
       _shopRepository.toggleFavoriteProduct(uid: userId, productId: product.id);
-      // favProductsIds = await _shopRepository.getUserFavoriteProducts(
-      //     uid: userId) as List<String>;
-      //favoriteProducts = [];
       emit(GetFavoriteLoaded(favProductsIds, favoriteProducts));
     } on NetworkException {
       emit(GetFavoriteError(
           "Couldn't change favorite item. Is the device online?"));
     }
+  }
+
+  void clearFavorites() {
+    isLogged = false;
+    favoriteProducts = [];
+    favProductsIds = [];
+    favoriteProducts = [];
+    userId = '';
   }
 }
