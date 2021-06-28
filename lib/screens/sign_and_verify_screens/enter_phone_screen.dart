@@ -158,7 +158,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                     softWrap: true,
                     style: AllStyles.fontSize17w400,
                   ),
-                  SizedBox(height: 24.0),
+                  const SizedBox(height: 24.0),
                   TextField(
                     controller: _phoneNumberController,
                     keyboardType: TextInputType.phone,
@@ -171,7 +171,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                     ),
                     decoration: phoneNumInputDecoration,
                   ),
-                  SizedBox(height: 24.0),
+                  const SizedBox(height: 24.0),
                   SizedBox(
                     height: 64.0,
                     width: MediaQuery.of(context).size.width,
@@ -204,7 +204,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, TabsScreen.routeName);

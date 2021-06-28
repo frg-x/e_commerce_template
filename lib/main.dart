@@ -36,56 +36,6 @@ void main() async {
   ]).then((_) => runApp(MyApp()));
 }
 
-// class MyApp extends StatelessWidget {
-//   static Widget? _appCache;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     if (_appCache == null) _appCache = _buildApp();
-//     return _appCache!;
-//   }
-//
-//   static Widget _buildApp() {
-//     print('Starting MyApp');
-//     return MultiBlocProvider(
-//       providers: [
-//         BlocProvider(create: (context) => ProductsCubit(ShopRepository(), [])),
-//         BlocProvider(create: (context) => CategoriesCubit(ShopRepository())),
-//         BlocProvider(create: (context) => AdsCubit(ShopRepository())),
-//         BlocProvider(create: (context) => FavoriteCubit(ShopRepository())),
-//         BlocProvider(create: (context) => UserStatusCubit()),
-//         BlocProvider(create: (context) => ToggleBotNavBarCubit()),
-//         BlocProvider(create: (context) => FilterCubit(Filter())),
-//         BlocProvider(create: (context) => ProductPageOptionsCubit()),
-//         BlocProvider(create: (context) => CartCubit([], 0, 0)),
-//         BlocProvider(create: (context) => DeliveryCubit(0)),
-//       ],
-//       child: MaterialApp(
-//         title: 'My Shop',
-//         theme: ThemeData(
-//           fontFamily: 'SF-Pro-Text',
-//           accentColor: AllColors.deepPurple,
-//           buttonTheme: ButtonThemeData(hoverColor: AllColors.deepPurple),
-//         ),
-//         debugShowCheckedModeBanner: false,
-//         home: VerifyUserStatusScreen(),
-//         routes: {
-//           GetStarted.routeName: (context) => GetStarted(),
-//           EnterPhoneScreen.routeName: (context) => EnterPhoneScreen(),
-//           VerificationScreen.routeName: (context) => VerificationScreen(),
-//           TabsScreen.routeName: (context) => TabsScreen(),
-//           SubCatalogueScreen.routeName: (context) => SubCatalogueScreen(),
-//           FilterScreen.routeName: (context) => FilterScreen(),
-//           ProductScreen.routeName: (context) => ProductScreen(),
-//           CartScreen.routeName: (context) => CartScreen(),
-//           CheckoutScreen.routeName: (context) => CheckoutScreen(),
-//           VerifyUserStatusScreen.routeName: (context) =>
-//               VerifyUserStatusScreen(),
-//         },
-//       ),
-//     );
-//    }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -129,3 +79,53 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// class MyApp extends StatelessWidget {
+// static Widget? _appCache;
+//
+// @override
+// Widget build(BuildContext context) {
+//   if (_appCache == null) _appCache = _buildApp();
+//   return _appCache!;
+// }
+//
+// static Widget _buildApp() {
+//   print('Starting MyApp');
+//   return MultiBlocProvider(
+//     providers: [
+//       BlocProvider(create: (context) => ProductsCubit(ShopRepository(), [])),
+//       BlocProvider(create: (context) => CategoriesCubit(ShopRepository())),
+//       BlocProvider(create: (context) => AdsCubit(ShopRepository())),
+//       BlocProvider(create: (context) => FavoriteCubit(ShopRepository())),
+//       BlocProvider(create: (context) => UserStatusCubit()),
+//       BlocProvider(create: (context) => ToggleBotNavBarCubit()),
+//       BlocProvider(create: (context) => FilterCubit(Filter())),
+//       BlocProvider(create: (context) => ProductPageOptionsCubit()),
+//       BlocProvider(create: (context) => CartCubit([], 0, 0)),
+//       BlocProvider(create: (context) => DeliveryCubit(0)),
+//     ],
+//     child: MaterialApp(
+//       title: 'My Shop',
+//       theme: ThemeData(
+//         fontFamily: 'SF-Pro-Text',
+//         accentColor: AllColors.deepPurple,
+//         buttonTheme: ButtonThemeData(hoverColor: AllColors.deepPurple),
+//       ),
+//       debugShowCheckedModeBanner: false,
+//       home: VerifyUserStatusScreen(),
+//       routes: {
+//         GetStarted.routeName: (context) => GetStarted(),
+//         EnterPhoneScreen.routeName: (context) => EnterPhoneScreen(),
+//         VerificationScreen.routeName: (context) => VerificationScreen(),
+//         TabsScreen.routeName: (context) => TabsScreen(),
+//         SubCatalogueScreen.routeName: (context) => SubCatalogueScreen(),
+//         FilterScreen.routeName: (context) => FilterScreen(),
+//         ProductScreen.routeName: (context) => ProductScreen(),
+//         CartScreen.routeName: (context) => CartScreen(),
+//         CheckoutScreen.routeName: (context) => CheckoutScreen(),
+//         VerifyUserStatusScreen.routeName: (context) =>
+//             VerifyUserStatusScreen(),
+//       },
+//     ),
+//   );
+//  }

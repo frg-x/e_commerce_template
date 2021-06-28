@@ -98,7 +98,7 @@ class _SubCatBodyState extends State<SubCatBody> {
                     scrollDirection: Axis.horizontal,
                     itemCount: clothesTypes.length,
                     separatorBuilder: (BuildContext context, int index) {
-                      return SizedBox(width: 8.0);
+                      return const SizedBox(width: 8.0);
                     },
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
@@ -305,7 +305,7 @@ class _SubCatBodyState extends State<SubCatBody> {
                                           style: AllStyles
                                               .discountPriceLabelTextStyle,
                                         ),
-                                        SizedBox(width: 4.0),
+                                        const SizedBox(width: 4.0),
                                         Text(
                                           '\$${productItemList[index].price}',
                                           maxLines: 1,

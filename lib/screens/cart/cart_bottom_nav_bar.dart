@@ -54,7 +54,7 @@ class _CartBottomNavBarState extends State<CartBottomNavBar> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   SizedBox(
                     height: 48.0,
                     width: MediaQuery.of(context).size.width,

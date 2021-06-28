@@ -87,14 +87,14 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                   height: 24,
                   width: 24,
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Text(
                   'Shipping Address',
                   style: AllStyles.fontSize19w700deepPurple,
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Container(
               padding: EdgeInsets.only(
                 left: 16.0,
@@ -136,7 +136,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 6.0),
+                  const SizedBox(height: 6.0),
                   Container(
                     width: double.infinity,
                     child: Column(
@@ -154,7 +154,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                 ],
               ),
             ),
-            SizedBox(height: 33.0),
+            const SizedBox(height: 33.0),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -163,14 +163,14 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                   height: 24,
                   width: 24,
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Text(
                   'Delivery Method',
                   style: AllStyles.fontSize19w700deepPurple,
                 ),
               ],
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -207,7 +207,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                       child: Column(
                         children: [
                           SvgPicture.asset(deliveryMethods[0]['image']),
-                          SizedBox(height: 12.0),
+                          const SizedBox(height: 12.0),
                           Text(
                             '\$${deliveryMethods[0]['cost']}',
                             style: AllStyles.fontSize14w600deepPurple,
@@ -221,7 +221,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16.0),
+                const SizedBox(width: 16.0),
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
@@ -255,7 +255,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                       child: Column(
                         children: [
                           SvgPicture.asset(deliveryMethods[1]['image']),
-                          SizedBox(height: 12.0),
+                          const SizedBox(height: 12.0),
                           Text(
                             '\$${deliveryMethods[1]['cost']}',
                             style: AllStyles.fontSize14w600deepPurple,
@@ -269,7 +269,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16.0),
+                const SizedBox(width: 16.0),
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
@@ -303,7 +303,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                       child: Column(
                         children: [
                           SvgPicture.asset(deliveryMethods[2]['image']),
-                          SizedBox(height: 12.0),
+                          const SizedBox(height: 12.0),
                           Text(
                             '\$${deliveryMethods[2]['cost']}',
                             style: AllStyles.fontSize14w600deepPurple,
@@ -319,7 +319,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                 ),
               ],
             ),
-            SizedBox(height: 33.0),
+            const SizedBox(height: 33.0),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -328,14 +328,14 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                   height: 24,
                   width: 24,
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Text(
                   'Payment Method',
                   style: AllStyles.fontSize19w700deepPurple,
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Container(
               padding: EdgeInsets.all(16.0),
               decoration: BoxDecoration(
@@ -359,7 +359,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                         children: [
                           SvgPicture.asset(
                               'assets/images/icons/mastercard.svg'),
-                          SizedBox(width: 12),
+                          const SizedBox(width: 12),
                           Text(
                             '**** **** **** 5678',
                             style: AllStyles.fontSize14w600deepPurple,
@@ -383,6 +383,7 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                 ],
               ),
             ),
+            const SizedBox(height: 274),
           ],
         ),
       ),

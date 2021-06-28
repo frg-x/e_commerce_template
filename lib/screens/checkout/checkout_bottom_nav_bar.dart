@@ -78,13 +78,13 @@ class _CheckoutBottomNavBarState extends State<CheckoutBottomNavBar> {
                           'Success',
                           style: AllStyles.SFProDisplay25w700deepPurple,
                         ),
-                        SizedBox(height: 12.0),
+                        const SizedBox(height: 12.0),
                         Text(
                           'Your order will be delivered soon.\nIt can be tracked in the \"Orders\" section.',
                           style: AllStyles.fontSize14w400lightPurpleGray,
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 24.0),
+                        const SizedBox(height: 24.0),
                         SizedBox(
                           height: 48.0,
                           width: 239.0,
@@ -109,7 +109,7 @@ class _CheckoutBottomNavBarState extends State<CheckoutBottomNavBar> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 24.0),
+                        const SizedBox(height: 24.0),
                         Text(
                           'Go to Orders',
                           style: AllStyles.fontSize17w700lightGray,
@@ -173,7 +173,7 @@ class _CheckoutBottomNavBarState extends State<CheckoutBottomNavBar> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 8.0),
+                      const SizedBox(height: 8.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -187,7 +187,7 @@ class _CheckoutBottomNavBarState extends State<CheckoutBottomNavBar> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -201,7 +201,7 @@ class _CheckoutBottomNavBarState extends State<CheckoutBottomNavBar> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       SizedBox(
                         height: 48.0,
                         width: MediaQuery.of(context).size.width,

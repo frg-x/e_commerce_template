@@ -41,7 +41,7 @@ class ProfileAppBar extends StatelessWidget with PreferredSizeWidget {
                           width: 70,
                           height: 70,
                         ),
-                        SizedBox(width: 16.0),
+                        const SizedBox(width: 16.0),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -49,7 +49,7 @@ class ProfileAppBar extends StatelessWidget with PreferredSizeWidget {
                               'Oleh Chabanov',
                               style: AllStyles.fontSize19w700white,
                             ),
-                            SizedBox(height: 8.0),
+                            const SizedBox(height: 8.0),
                             Text(
                               context.read<UserStatusCubit>().phoneNumber,
                               style: AllStyles.fontSize14w400white,

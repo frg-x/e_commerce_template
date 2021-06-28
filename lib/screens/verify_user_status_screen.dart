@@ -50,7 +50,7 @@ class _VerifyUserStatusScreenState extends State<VerifyUserStatusScreen> {
                   Center(
                     child: Text('Trying to check user...'),
                   ),
-                  SizedBox(height: 25.0),
+                  const SizedBox(height: 25.0),
                   LoadingIndicator(height: 36.0),
                 ],
               ),

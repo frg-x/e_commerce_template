@@ -171,7 +171,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                               style: AllStyles
                                                   .discountPriceLabelTextStyle,
                                             ),
-                                            SizedBox(width: 4.0),
+                                            const SizedBox(width: 4.0),
                                             Text(
                                               '\$${favProducts[index].price}',
                                               maxLines: 1,

@@ -30,7 +30,7 @@ class BottomNavBarButton extends StatelessWidget {
               height: 24.0,
               //fit: BoxFit.scaleDown,
             ),
-            SizedBox(height: 7.0),
+            const SizedBox(height: 7.0),
             Text(
               title,
               style: AllStyles.bottomNavBarItemTextStyle.copyWith(color: color),

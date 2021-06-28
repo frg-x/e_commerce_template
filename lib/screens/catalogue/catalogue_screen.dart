@@ -32,7 +32,7 @@ class _CatalogueScreenState extends State<CatalogueScreen> {
                   shrinkWrap: true,
                   itemCount: categories.length,
                 ),
-                SizedBox(height: 104),
+                const SizedBox(height: 104),
               ],
             ),
           );

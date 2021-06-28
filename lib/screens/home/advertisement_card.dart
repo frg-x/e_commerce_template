@@ -39,14 +39,14 @@ class AdvertisementCard extends StatelessWidget {
                 style: AllStyles.SFProDisplay25w700white,
                 textAlign: TextAlign.start,
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Row(
                 children: [
                   Text(
                     'See more',
                     style: AllStyles.SFProText12w700mainYellow,
                   ),
-                  SizedBox(width: 2.0),
+                  const SizedBox(width: 2.0),
                   Icon(
                     Icons.arrow_forward_ios_outlined,
                     size: 14.0,

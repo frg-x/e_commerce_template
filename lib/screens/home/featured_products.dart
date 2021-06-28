@@ -151,7 +151,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                                   maxLines: 1,
                                   style: AllStyles.discountPriceLabelTextStyle,
                                 ),
-                                SizedBox(width: 4.0),
+                                const SizedBox(width: 4.0),
                                 Text(
                                   '\$${productItemList[index].price}',
                                   maxLines: 1,

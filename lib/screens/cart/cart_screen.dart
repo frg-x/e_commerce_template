@@ -88,7 +88,7 @@ class _CartScreenBodyState extends State<CartScreenBody> {
                     width: 80.0,
                     height: 80.0,
                   ),
-                  SizedBox(width: 12.0),
+                  const SizedBox(width: 12.0),
                   Container(
                     child: Expanded(
                       child: Column(
@@ -110,7 +110,7 @@ class _CartScreenBodyState extends State<CartScreenBody> {
                                 '${cart[index].color}, ',
                                 style: AllStyles.fontSize14w400deepPurple,
                               ),
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               Text(
                                 'Size: ',
                                 style: AllStyles.fontSize14w600

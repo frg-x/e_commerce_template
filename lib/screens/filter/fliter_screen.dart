@@ -261,15 +261,13 @@ class _FilterBodyState extends State<FilterBody> {
                                   : Container(
                                       width: 46,
                                     ),
-                              SizedBox(
+                              Container(
                                 width: 37,
                                 height: 37,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(40.0)),
-                                    color: colors[index]['color'],
-                                  ),
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(40.0)),
+                                  color: colors[index]['color'],
                                 ),
                               ),
                             ],
@@ -295,30 +293,28 @@ class _FilterBodyState extends State<FilterBody> {
                       for (int index = 0; index < sizes.length; index++)
                         GestureDetector(
                           onTap: () => selectSize(index),
-                          child: SizedBox(
+                          child: Container(
                             width: 47,
                             height: 47,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: sizes[index]['isActive']
-                                      ? AllColors.mainYellow
-                                      : AllColors.phoneNumTextFieldBorder,
-                                  width: 1.0,
-                                ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8.0)),
+                            decoration: BoxDecoration(
+                              border: Border.all(
                                 color: sizes[index]['isActive']
                                     ? AllColors.mainYellow
-                                    : Colors.white,
+                                    : AllColors.phoneNumTextFieldBorder,
+                                width: 1.0,
                               ),
-                              child: Center(
-                                child: Text(
-                                  sizes[index]['size'],
-                                  style: sizes[index]['isActive']
-                                      ? AllStyles.fontSize14w400white
-                                      : AllStyles.fontSize14w400lightPurpleGray,
-                                ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              color: sizes[index]['isActive']
+                                  ? AllColors.mainYellow
+                                  : Colors.white,
+                            ),
+                            child: Center(
+                              child: Text(
+                                sizes[index]['size'],
+                                style: sizes[index]['isActive']
+                                    ? AllStyles.fontSize14w400white
+                                    : AllStyles.fontSize14w400lightPurpleGray,
                               ),
                             ),
                           ),
@@ -366,7 +362,7 @@ class _FilterBodyState extends State<FilterBody> {
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 ),
-                SizedBox(height: 32.0),
+                const SizedBox(height: 32.0),
                 SizedBox(
                   height: 48.0,
                   width: MediaQuery.of(context).size.width,
@@ -383,7 +379,7 @@ class _FilterBodyState extends State<FilterBody> {
                     ),
                   ),
                 ),
-                SizedBox(height: 34.0),
+                const SizedBox(height: 34.0),
               ],
             ),
           );

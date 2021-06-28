@@ -20,13 +20,11 @@ class UserStatusCubit extends Cubit<IsLoggedState> {
       if (currentUser == null) {
         isLogged = false;
         initialScreen = GetStarted();
-        print('----NotLoggedInState');
         emit(NotLoggedInState());
       } else {
         user = currentUser;
         isLogged = true;
         initialScreen = TabsScreen();
-        print('----LoggedInState');
         emit(LoggedInState());
       }
     });

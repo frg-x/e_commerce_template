@@ -44,14 +44,14 @@ class CatalogueScreenItem extends StatelessWidget {
           child: Column(
             children: [
               modalSheetDivider(),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Center(
                 child: Text(
                   category.title,
                   style: AllStyles.fontSize19w700deepPurple,
                 ),
               ),
-              SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
               Expanded(
                 child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),

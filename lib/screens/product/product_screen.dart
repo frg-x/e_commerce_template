@@ -205,7 +205,7 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                             ),
                           ),
                         ),
-                        SizedBox(width: 6.0),
+                        const SizedBox(width: 6.0),
                         Text(
                           '8 reviews',
                           style: AllStyles.fontSize12w700lightPurpleGray,
@@ -233,7 +233,7 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                               style: AllStyles.discountPriceLabelTextStyle
                                   .copyWith(fontSize: 25.0),
                             ),
-                            SizedBox(width: 6.0),
+                            const SizedBox(width: 6.0),
                             Text(
                               '\$${widget.product.price.toStringAsFixed(2)}',
                               style: AllStyles.oldPriceLabelTextStyle.copyWith(
@@ -269,30 +269,28 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                           child: Stack(
                             alignment: Alignment.center,
                             children: [
-                              SizedBox(
+                              Container(
                                 width: 47,
                                 height: 47,
-                                child: Container(
-                                  decoration: colorsList[index]['isActive']
-                                      ? BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(8.0)),
-                                          border: Border.all(
-                                            width: 2.0,
-                                            color: AllColors.mainYellow,
-                                          ),
-                                        )
-                                      : BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(8.0)),
-                                          border: Border.all(
-                                            width: 2.0,
-                                            color: Colors.transparent,
-                                          ),
+                                decoration: colorsList[index]['isActive']
+                                    ? BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0)),
+                                        border: Border.all(
+                                          width: 2.0,
+                                          color: AllColors.mainYellow,
                                         ),
-                                  child: Image.asset(
-                                    colorsList[index]['image'],
-                                  ),
+                                      )
+                                    : BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0)),
+                                        border: Border.all(
+                                          width: 2.0,
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                child: Image.asset(
+                                  colorsList[index]['image'],
                                 ),
                               ),
                             ],
@@ -318,30 +316,28 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                       for (int index = 0; index < sizesList.length; index++)
                         GestureDetector(
                           onTap: () => selectSize(index),
-                          child: SizedBox(
+                          child: Container(
                             width: 47,
                             height: 47,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: sizesList[index]['isActive']
-                                      ? AllColors.mainYellow
-                                      : AllColors.phoneNumTextFieldBorder,
-                                  width: 1.0,
-                                ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8.0)),
+                            decoration: BoxDecoration(
+                              border: Border.all(
                                 color: sizesList[index]['isActive']
                                     ? AllColors.mainYellow
-                                    : Colors.white,
+                                    : AllColors.phoneNumTextFieldBorder,
+                                width: 1.0,
                               ),
-                              child: Center(
-                                child: Text(
-                                  widget.product.sizes[index]['title'],
-                                  style: sizesList[index]['isActive']
-                                      ? AllStyles.fontSize14w400white
-                                      : AllStyles.fontSize14w400lightPurpleGray,
-                                ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              color: sizesList[index]['isActive']
+                                  ? AllColors.mainYellow
+                                  : Colors.white,
+                            ),
+                            child: Center(
+                              child: Text(
+                                widget.product.sizes[index]['title'],
+                                style: sizesList[index]['isActive']
+                                    ? AllStyles.fontSize14w400white
+                                    : AllStyles.fontSize14w400lightPurpleGray,
                               ),
                             ),
                           ),
@@ -352,7 +348,7 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
               ],
             ),
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -378,12 +374,12 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                   'Product details',
                   style: AllStyles.fontSize19w700deepPurple,
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 Text(
                   widget.product.description,
                   style: AllStyles.fontSize14w400lightPurpleGray,
                 ),
-                SizedBox(height: 12.0),
+                const SizedBox(height: 12.0),
                 Center(
                   child: SvgPicture.asset(
                       'assets/images/icons/product_arrow_down.svg'),
@@ -391,7 +387,7 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
               ],
             ),
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -426,7 +422,7 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                           'See All',
                           style: AllStyles.SFProText12w700lightGray,
                         ),
-                        SizedBox(width: 2.0),
+                        const SizedBox(width: 2.0),
                         Icon(
                           Icons.arrow_forward_ios_outlined,
                           size: 14.0,
@@ -436,13 +432,13 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                     )
                   ],
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 Text(
                   'Olha Chabanova',
                   style: AllStyles.fontSize14w600
                       .copyWith(color: AllColors.deepPurple),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -463,17 +459,17 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                     ),
                   ],
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 Text(
                   widget.product.reviews,
                   style: AllStyles.fontSize14w400lightPurpleGray,
                 ),
-                SizedBox(height: 14.0),
+                const SizedBox(height: 14.0),
                 Text(
                   '835 people found this helpful',
                   style: AllStyles.fontSize11w400white,
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 SizedBox(
                   height: 24.0,
                   child: Row(
@@ -496,7 +492,7 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                               style: AllStyles.fontSize12w400lightGray,
                             ),
                           ),
-                          SizedBox(width: 6.0),
+                          const SizedBox(width: 6.0),
                           SizedBox(
                             child: SvgPicture.asset(
                                 'assets/images/icons/thumb_up.svg'),
@@ -679,7 +675,7 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                                                 style: AllStyles
                                                     .discountPriceLabelTextStyle,
                                               ),
-                                              SizedBox(width: 4.0),
+                                              const SizedBox(width: 4.0),
                                               Text(
                                                 '\$${relatedProducts[index].price.toStringAsFixed(2)}',
                                                 maxLines: 1,
@@ -703,7 +699,7 @@ class _ProductScreenBodyState extends State<ProductScreenBody> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 8.0),
+                          const SizedBox(width: 8.0),
                         ],
                       );
                     },

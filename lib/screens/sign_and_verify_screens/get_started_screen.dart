@@ -111,14 +111,14 @@ class _GetStartedState extends State<GetStarted> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 32.0),
+                    const SizedBox(height: 32.0),
                     Text(
                       'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
                       style: AllStyles.getStartedSubText,
                       textAlign: TextAlign.center,
                       softWrap: true,
                     ),
-                    SizedBox(height: 32.0),
+                    const SizedBox(height: 32.0),
                     SizedBox(
                       height: 48.0,
                       width: 239.0,

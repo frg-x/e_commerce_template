@@ -41,7 +41,7 @@ class _CatalogueCarouselState extends State<CatalogueCarousel> {
               );
             },
             separatorBuilder: (context, int index) {
-              return SizedBox(width: 16.0);
+              return const SizedBox(width: 16.0);
             },
           ),
         );

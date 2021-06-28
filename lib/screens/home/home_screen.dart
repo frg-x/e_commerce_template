@@ -31,11 +31,6 @@ class _HomeScreenState extends State<HomeScreen>
   ];
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   void dispose() {
     _pageController.dispose();
     _animationController.dispose();
@@ -162,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen>
                 }
               },
             ),
-            SizedBox(height: 28.0),
+            const SizedBox(height: 28.0),
             GestureDetector(
               onTap: () {
                 print('Catalogue Screen');
@@ -180,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen>
                         'See All',
                         style: AllStyles.SFProText12w700lightGray,
                       ),
-                      SizedBox(width: 2.0),
+                      const SizedBox(width: 2.0),
                       Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 14.0,
@@ -191,9 +186,9 @@ class _HomeScreenState extends State<HomeScreen>
                 ],
               ),
             ),
-            SizedBox(height: 18.0),
+            const SizedBox(height: 18.0),
             CatalogueCarousel(),
-            SizedBox(height: 32.0),
+            const SizedBox(height: 32.0),
             Container(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -201,13 +196,13 @@ class _HomeScreenState extends State<HomeScreen>
                 style: AllStyles.homeCatTitleTextStyle,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16.0,
             ),
             FeaturedProducts(),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             LoadingIndicator(height: 40.0),
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
           ],
         ),
       ),

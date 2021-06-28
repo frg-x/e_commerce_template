@@ -36,7 +36,7 @@ class _TabsScreenState extends State<TabsScreen> {
           formatPhoneNumber(user.phoneNumber!);
       context.read<FavoriteCubit>().setUserId(user.uid);
       context.read<FavoriteCubit>().getFavorite();
-      print(user);
+      //print(user);
 
       FirebaseFirestore.instance
           .collection('users')
@@ -65,15 +65,15 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   void initState() {
-    print('Current user is: ${context.read<UserStatusCubit>().user}');
+    //print('Current user is: ${context.read<UserStatusCubit>().user}');
     getCurrentUser();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    print(context.read<FavoriteCubit>().favoriteProducts);
-    print(context.read<FavoriteCubit>().favProductsIds);
+    //print(context.read<FavoriteCubit>().favoriteProducts);
+    //print(context.read<FavoriteCubit>().favProductsIds);
     return BlocBuilder<ToggleBotNavBarCubit, ToggleBotNavBarState>(
       builder: (context, state) {
         int selectedIndex = (state as GetSelectedIndex).index;

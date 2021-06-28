@@ -50,7 +50,7 @@ class CatalogueAppBar extends StatelessWidget with PreferredSizeWidget {
                     'Catalogue',
                     style: AllStyles.fontSize19w700white,
                   ),
-                  SizedBox(width: 24.0),
+                  const SizedBox(width: 24.0),
                 ],
               ),
             ),

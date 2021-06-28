@@ -47,7 +47,7 @@ class CheckoutAppBar extends StatelessWidget with PreferredSizeWidget {
                 'Check Out',
                 style: AllStyles.fontSize19w700white,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 24,
                 height: 24,
               ),

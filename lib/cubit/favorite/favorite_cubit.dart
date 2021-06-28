@@ -20,8 +20,8 @@ class FavoriteCubit extends Cubit<GetFavoriteState> {
 
   Future<void> getFavorite() async {
     try {
-      // favProductsIds = [];
-      // favoriteProducts = [];
+      favProductsIds = [];
+      favoriteProducts = [];
       allProducts = await _shopRepository.fetchProducts();
       favProductsIds = await _shopRepository.getUserFavoriteProducts(
           uid: userId) as List<String>;
@@ -37,30 +37,6 @@ class FavoriteCubit extends Cubit<GetFavoriteState> {
           "Couldn't fetch advertisements. Is the device online?"));
     }
   }
-
-  // Future<void> getFavorite() async {
-  //   print('Called getFavorite!');
-  //   try {
-  //     favProductsIds = [];
-  //     favoriteProducts = [];
-  //     await _shopRepository
-  //         .fetchProducts()
-  //         .then((value) => allProducts = value)
-  //         .then((_) async {
-  //       favProductsIds = await _shopRepository.getUserFavoriteProducts(
-  //           uid: userId) as List<String>;
-  //       allProducts.forEach((element) {
-  //         if (favProductsIds.contains(element.id)) {
-  //           favoriteProducts.add(element);
-  //         }
-  //       });
-  //       emit(GetFavoriteLoaded(favProductsIds, favoriteProducts));
-  //     });
-  //   } on NetworkException {
-  //     emit(GetFavoriteError(
-  //         "Couldn't fetch favorite/products data. Is the device online?"));
-  //   }
-  // }
 
   Future<void> toggleFavorite(Product product) async {
     try {

@@ -53,7 +53,7 @@ class FavoriteAppBar extends StatelessWidget with PreferredSizeWidget {
                       'Favorite',
                       style: AllStyles.fontSize19w700white,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 24,
                       height: 24,
                     ),

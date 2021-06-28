@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return context.read<UserStatusCubit>().isLogged
-        ? Container(
+        ? SingleChildScrollView(
             padding: EdgeInsets.only(
               left: 16.0,
               right: 16.0,
@@ -31,7 +31,7 @@ class ProfileScreen extends StatelessWidget {
                         print('Shipping Address');
                       },
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     RoundedContainer(
                       image: 'assets/images/icons/credit-card.png',
                       title: 'Payment Method',
@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                         print('Payment Method');
                       },
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     RoundedContainer(
                       image: 'assets/images/icons/clipboard-list.png',
                       title: 'Orders',
@@ -47,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                         print('Orders');
                       },
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     RoundedContainer(
                       image: 'assets/images/icons/favorite.png',
                       title: 'Favorite',
@@ -57,7 +57,7 @@ class ProfileScreen extends StatelessWidget {
                             .toggleBottomNavBarMenu(2);
                       },
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     RoundedContainer(
                       image: 'assets/images/icons/settings.png',
                       title: 'Settings',
@@ -65,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                         print('Settings');
                       },
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     RoundedContainer(
                       image: 'assets/images/icons/logout.png',
                       title: 'Log Out',
@@ -75,13 +75,16 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 Column(
                   children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Text(
                       'Privacy Policy',
                       style: AllStyles.fontSize12w400lightPurpleGray.copyWith(
                         decoration: TextDecoration.underline,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 106,
                     )
                   ],

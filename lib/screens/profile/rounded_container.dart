@@ -34,7 +34,7 @@ class RoundedContainer extends StatelessWidget {
           child: Row(
             children: [
               Image.asset(image),
-              SizedBox(width: 12.0),
+              const SizedBox(width: 12.0),
               Text(
                 title,
                 style: AllStyles.fontSize17w600deepPurple,

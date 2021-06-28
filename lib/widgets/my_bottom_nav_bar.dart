@@ -179,7 +179,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 10.0),
+                    const SizedBox(width: 10.0),
                     BlocBuilder<CartCubit, CartState>(
                       builder: (context, state) {
                         int cartItemsCount =
