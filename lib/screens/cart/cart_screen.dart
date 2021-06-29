@@ -98,6 +98,8 @@ class _CartScreenBodyState extends State<CartScreenBody> {
                           Text(
                             '${cart[index].title}',
                             style: AllStyles.fontSize14w400deepPurple,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           Row(
                             children: [
@@ -110,7 +112,7 @@ class _CartScreenBodyState extends State<CartScreenBody> {
                                 '${cart[index].color}, ',
                                 style: AllStyles.fontSize14w400deepPurple,
                               ),
-                              const SizedBox(width: 20),
+                              const SizedBox(width: 10),
                               Text(
                                 'Size: ',
                                 style: AllStyles.fontSize14w600
