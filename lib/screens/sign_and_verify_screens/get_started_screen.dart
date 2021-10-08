@@ -24,13 +24,13 @@ class _GetStartedState extends State<GetStarted> {
               height: 600,
             ),
             Container(
-              height: 560,
+              height: 600,
               width: MediaQuery.of(context).size.width,
               color: AllColors.getStartedContainerOverlay.withAlpha(77),
             ),
             Positioned(
               right: 0,
-              bottom: 220,
+              bottom: 255,
               child: Hero(
                   tag: 'corner',
                   child: Container(
@@ -79,7 +79,7 @@ class _GetStartedState extends State<GetStarted> {
               bottom: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: 291,
+                height: 336,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,

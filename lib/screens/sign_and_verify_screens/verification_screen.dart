@@ -23,6 +23,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
   //final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   final TextEditingController pinCodeController = TextEditingController();
 
+  bool wasInitialSent = false;
+
   void _validatePin(String pin) {
     setState(() {
       otp = pin;
@@ -51,7 +53,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
         await FirebaseAuth.instance
             .signInWithCredential(credential)
             .then((value) {
-          if (value.user != null) {
+          if (value.user!.uid.length > 5) {
             //print('Logged!');
             Navigator.pushNamed(context, TabsScreen.routeName);
           }
@@ -79,14 +81,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
   }
 
   @override
-  void didChangeDependencies() {
-    phoneNumber = ModalRoute.of(context)!.settings.arguments as String;
-    _verifyPinCode();
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    phoneNumber = ModalRoute.of(context)!.settings.arguments as String;
+    if (!wasInitialSent) {
+      _verifyPinCode();
+    }
     return Scaffold(
       //key: _scaffoldKey,
       body: SingleChildScrollView(
