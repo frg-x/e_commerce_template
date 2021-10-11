@@ -21,16 +21,16 @@ class _GetStartedState extends State<GetStarted> {
               'assets/images/main_gif.gif',
               fit: BoxFit.cover,
               scale: 0.5,
-              height: 600,
+              height: MediaQuery.of(context).size.height / 3 * 2,
             ),
             Container(
-              height: 600,
+              height: MediaQuery.of(context).size.height / 3 * 2,
               width: MediaQuery.of(context).size.width,
               color: AllColors.getStartedContainerOverlay.withAlpha(77),
             ),
             Positioned(
               right: 0,
-              bottom: 255,
+              bottom: MediaQuery.of(context).size.height / 3,
               child: Hero(
                   tag: 'corner',
                   child: Container(
@@ -79,7 +79,7 @@ class _GetStartedState extends State<GetStarted> {
               bottom: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: 336,
+                height: MediaQuery.of(context).size.height / 3 + 50,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,

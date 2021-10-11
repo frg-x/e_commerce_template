@@ -90,6 +90,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     phoneNumber = ModalRoute.of(context)!.settings.arguments as String;
     if (!wasInitialSent) {
       _verifyPinCode();
+      wasInitialSent = true;
     }
     return Scaffold(
       //key: _scaffoldKey,

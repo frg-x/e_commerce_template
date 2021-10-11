@@ -1,24 +1,25 @@
 {
   "project_info": {
     "project_number": "778212110619",
+    "firebase_url": "https://rapid-chat-314700-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "rapid-chat-314700",
     "storage_bucket": "rapid-chat-314700.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:778212110619:android:89c2eede0143942da5e3be",
+        "mobilesdk_app_id": "1:778212110619:android:1f88cbf4c44798c4a5e3be",
         "android_client_info": {
           "package_name": "com.example.e_commerce_template"
         }
       },
       "oauth_client": [
         {
-          "client_id": "778212110619-kjmqv0o2gpkh5fmv77143a65lqsfrbrl.apps.googleusercontent.com",
+          "client_id": "778212110619-8hti012hvomf5ksqhnvvpqfmu0tpicaj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.e_commerce_template",
-            "certificate_hash": "a5d0571104074112688bdd12fd502ac2e4b441e4"
+            "certificate_hash": "ad5e21d745f7a06a4757ce2995955ab1ba1a63e4"
           }
         },
         {
@@ -37,6 +38,14 @@
             {
               "client_id": "778212110619-7dkmidj1goi5h6h289ioafjiaatmf3gt.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "778212110619-b7c110r7thp274uglk4gn6gvjdeav1ba.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myshop-ios",
+                "app_store_id": "11111111"
+              }
             }
           ]
         }
@@ -74,6 +83,14 @@
             {
               "client_id": "778212110619-7dkmidj1goi5h6h289ioafjiaatmf3gt.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "778212110619-b7c110r7thp274uglk4gn6gvjdeav1ba.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myshop-ios",
+                "app_store_id": "11111111"
+              }
             }
           ]
         }
